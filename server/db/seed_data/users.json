@@ -1,0 +1,38 @@
+[
+    {
+        "USERNAME": "admin",
+        "PASSWORD": "password",
+        "EMAIL": "admin@aol.com",
+        "IS_ADMIN": 1
+    },
+    {
+        "USERNAME": "Ray",
+        "PASSWORD": "pass",
+        "EMAIL": "rsad@aol.com",
+        "IS_ADMIN": 0
+    },
+    {
+        "USERNAME": "Ray3",
+        "PASSWORD": "pass",
+        "EMAIL": "rsarg2@jkds.net",
+        "IS_ADMIN": 0
+    },
+    {
+        "USERNAME": "Ray2",
+        "PASSWORD": "pass",
+        "EMAIL": "rsargolini7777@sbcglobal.net",
+        "IS_ADMIN": 0
+    },
+    {
+        "USERNAME": "Ray5",
+        "PASSWORD": "pass",
+        "EMAIL": "rsargolini@sbcglobal.net",
+        "IS_ADMIN": 0
+    },
+    {
+        "USERNAME": "RayTest",
+        "PASSWORD": "password",
+        "EMAIL": "RayTest@aol.com",
+        "IS_ADMIN": 0
+    }
+]

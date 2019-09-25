@@ -1,0 +1,182 @@
+/* All Pages - Website Title Container */
+#titleContainer, #pageContainer {
+    background-color: black;
+    padding-top: 4rem;
+    padding-bottom: .5rem;
+}
+
+/* All Pages - Website Site Header */
+#siteHeader {
+    font-size: 50px; 
+}
+
+/* All Pages - Website Page Header */
+#pageHeader {
+    font-size: 40px; 
+}
+
+/* All Pages - H1 */
+h1  {
+    color: white  ;
+    font-family: 'Holtwood One SC', serif;
+}
+
+/* All Pages - H2 */
+h2  {
+    color: black  ;
+    font-family: 'Holtwood One SC', serif;
+    font-size: 15px;
+}
+
+/* All Pages - Division Titles */
+#Pro-Am, #Elite, #Minor {
+    border-right: black solid;
+    border-width: 1px;
+
+}
+/* Home Page - Main Picture */
+#indexpageimage {
+    border-radius: 25px;
+}
+
+/* Team Details Page */
+.titleColumn {
+    font-weight: bold;
+}
+
+/* Team Details Page - Full Message */
+#teamFullMessage {
+    font-size: 20px;
+    color: red;
+}
+
+/* Table Head - Background Color */
+thead {
+    background-color: antiquewhite;
+}
+
+/* Invalid Data Message - Font Size */
+#invalidData {
+    font-size: 13px;
+}
+
+/* All Pages - Hide Alert boxes and buttons */
+.hidden, #playerTitle {
+    display: none;
+}
+
+/* All Pages - Subtitles */
+#subtitles, #subtitles2 {
+    font-size: 40px;
+}
+
+/* All Pages - Labels */
+.allLabels {
+    font-weight: bold;
+}
+
+/* All Pages - Fieldset Legends */
+#filterLegend, #teamInfoLegend, #managerInfoLegend, #teamLimitsLegend,
+#playerInfoLegend, #loginInfoLegend, #registerInfoLegend, #userProfileInfoLegend {
+    font-size: 15px;
+    font-weight: bold;
+    background-color: antiquewhite;
+}
+
+/* All Pages - Fieldset Size */
+#managerInfoSet, #teamLimitsSet, #playerInfoSet {
+    width: 1200px;
+    border: thin solid;
+    padding: 1px;
+}
+
+/* Login Page - Fieldset Size */
+#loginInfoSet, #userProfileInfoSet {
+    width: 780px;
+    border: thin solid;
+    padding: 1px;
+}
+
+/* Add Player Page - Fieldset Size */
+#addPlayerTeamInfoSet {
+    width: 700px;
+    border: thin solid;
+    padding: 1px;
+}
+
+/* New Team Page - Fieldsets Size */
+#teamInfoSet, #managerInfoSet, #registerInfoSet {
+    width: 1050px;
+    border: thin solid;
+    padding: 1px;
+}
+
+/* Filter Teams Page - Fieldset */
+#filterSet {
+    border: thin solid;
+    padding: 1em;
+}
+
+/* All Pages - Horizontal Rule */
+hr { 
+    border-width: 3px;
+}
+
+/* Filter Teams Page - All Buttons */
+.teamsBtn, .playersBtn {
+    text-align: center;   
+ }
+
+ /* All Pages - Modal Headers */
+ .modal-header {
+     justify-content: center;
+     font-weight: bold;
+     font-size: 20px;
+ }
+
+/* All Pages (except Edit Pages) - Required Note */ 
+#requireNote {
+    font-size: 13px;
+    color: red;
+    font-weight: bold;
+}
+
+/* Edit Pages) - Required Note */ 
+#requireNoteEdit {
+    font-size: 13px;
+    color: red;
+    font-weight: bold;
+    display: none;
+}
+
+/* Media Queries */ 
+/* All Pages - Extra small devices (phones, 850px and down) */
+@media only screen and (max-width: 850px) {
+    #siteHeader {font-size: 22px; padding-top: .1rem;}
+    #pageHeader {font-size: 20px; padding-top: .1rem;}
+    #copyright {font-size: 12px;}
+    #imagescredit {font-size: 12px;}
+    .tables {font-size: 12px;}
+    #subtitles {font-size: 20px;}
+    #subtitles2 {font-size: 20px;}
+    #Pro-Am, #Elite, #Minor, #Recreational { border-right: none; border-top: solid; border-width: 1px;}
+    #selectDivLabel {margin-left: 55px;}
+    #filterLegend {font-size: 14px;}
+    #divisionsLine {display: none;}
+    .buttonText {display: none;}
+}
+
+/* All Pages - Small devices (portrait tablets and large phones, 850px to 1050px) */
+@media only screen and (min-width: 850px) and (max-width: 1050px) {
+    #siteHeader {font-size: 35px; padding-top: .1rem;}
+    #pageHeader {font-size: 25px; padding-top: .1rem;}
+    #copyright {font-size: 12px;}
+    #imagescredit {font-size: 12px;}
+    .buttonText {display: none;}
+}
+
+/* All Pages - Large devices (laptops/desktops, 1050px to 1255px) */
+@media only screen and (min-width: 1050px) and (max-width: 1255px) {
+    #siteHeader {font-size: 45px; padding-top: .5rem;}
+    #pageHeader {font-size: 35px; padding-top: .5rem;}
+} 

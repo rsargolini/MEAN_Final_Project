@@ -1,0 +1,111 @@
+<body>
+    <header class="container-fluid text-center col-12" id="pageContainer">
+        <h1 class="display-2" id="pageHeader">Connecticut Hockey League</h1>
+    </header>
+
+    <main>
+
+        <!-- Add Team Form Section -->
+        <section class="container-fluid">
+            <h2 class="col-12 text-center font-weight-bold" id="subtitles">Add Team</h2>
+            <hr>
+            <p id="requireNote">* required fields</p>
+            <form id="teamDetailsForm" name="teamDetailsForm" action="#">
+                <div class="d-flex justify-content-center">
+                    <!-- Team Information Fieldset -->
+                    <fieldset id="teamInfoSet">
+                        <legend id="teamInfoLegend" class="w-50 border border-dark mx-auto text-center">Team Information
+                        </legend>
+                        <div class="form-row justify-content-center">
+                            <label for="teamname" class="allLabels ml-3 mr-3">Name*</label>
+                            <input type="text" class="form-control col-md-2 mb-2 ml-2 mr-2" name="teamname"
+                                id="teamname" autofocus>
+                            <label for="leaguecode" class="allLabels ml-3 mr-3">Division*</label>
+                            <!-- Hockey Divisions (dynamically generated) -->
+                            <select id="leaguecode" class="form-control col-md-2 mb-2 ml-2 mr-2" name="leaguecode">
+                                <option value="None" selected>Select one</option>
+                            </select>
+                            <label for="teamgender" class="allLabels ml-3 mr-3">Gender*</label>
+                            <select id="teamgender" name="teamgender" class="form-control col-md-2 mb-2 ml-2 mr-2">
+                                <option value="None" selected>Select one</option>
+                                <option value="Male">Male Only</option>
+                                <option value="Female">Female Only</option>
+                                <option value="Any">Coed</option>
+                            </select>
+                        </div>
+                        <div class="form-row justify-content-center mt-2">
+                            <label for="maxteammembers" class="allLabels mr-3">Max Players* (10-18)</label>
+                            <input type="number" class="form-control col-md-1 mb-2 ml-2 mr-2" name="maxteammembers"
+                                id="maxteammembers">
+                            <label for="minmemberage" class="allLabels ml-3 mr-3">Min Age* (&gt;17)</label>
+                            <input type="number" class="form-control col-md-1 mb-2 ml-2 mr-2" name="minmemberage"
+                                id="minmemberage">
+                            <label for="maxmemberage" class="allLabels ml-3 mr-3">Max Age* (&lt;71)</label>
+                            <input type="number" class="form-control col-md-1 mb-2 ml-2 mr-2" name="maxmemberage"
+                                id="maxmemberage">
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <!-- Manager Information Fieldset -->
+                    <fieldset id="managerInfoSet" class="mt-3">
+                        <legend id="managerInfoLegend" class="w-50 border border-dark mx-auto text-center">Manager
+                            Information
+                        </legend>
+                        <div class="form-row justify-content-center">
+                            <label for="managername" class="allLabels mr-3">Name*</label>
+                            <input type="text" class="form-control col-md-2 mb-2 ml-2 mr-2" name="managername"
+                                id="managername">
+                            <label for="managerphone" class="allLabels ml-3 mr-3">Phone*</label>
+                            <input type="text" class="form-control col-md-2 mb-2 ml-2 mr-2" name="managerphone"
+                                placeholder="Ex. 999-999-9999" id="managerphone">
+                            <label for="manageremail" class="allLabels ml-3 mr-3">Email*</label>
+                            <input type="text" class="form-control col-md-3 mb-2 ml-2 mr-2" name="manageremail"
+                                placeholder="Ex. JSmith@aol.com" id="manageremail">
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+        </section>
+
+        <!-- Alert Message for Invalid Data Section -->
+        <section class="form-row d-flex justify-content-center">
+            <div class="alert alert-danger hidden col-md-3 mt-2" role="alert" id="invalidData"></div>
+        </section>
+
+        <!-- Buttons Section -->
+        <section class="container-fluid">
+            <div class="row">
+                <div id="buttonsDiv" class="col-md-12 text-center mt-2">
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Save Section -->
+        <div class="modal fade container-fluid" id="savedModal" tabindex="-1" role="dialog"
+            aria-labelledby="savedModalText" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="modal-title" id="savedModalText"></p>
+                    </div>
+                    <div id="modalBody" class="modal-body text-center">
+                    </div>
+                    <!-- Modal OK Button -->
+                    <div class="modal-footer justify-content-center">
+                        <button id="okBtn" type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    {{> scripts}}
+
+    <script src="scripts/newteam.js"></script>
+    <script src="scripts/errors.js"></script>
+
+</body>
+
+</html>
