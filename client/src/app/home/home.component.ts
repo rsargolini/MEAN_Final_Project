@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LeagueService } from './../providers/league.service';
+import { LeagueService } from '../providers/league.service';
 
 @Component({
   selector: 'app-home',
