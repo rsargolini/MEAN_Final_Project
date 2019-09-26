@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // call getLeagues() method in LeaguesService
+    // call getLeagues() method in Leagues Service
     this.leagueService.getLeagues().subscribe(data => {
       this.leagues = data;
     });

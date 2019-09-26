@@ -20,19 +20,18 @@
                         <div class="form-row justify-content-center mt-2 mb-2">
                             <label for="inputUsername" id="nameLabel" class="allLabels ml-3 mr-3">User Name</label>
                             <input type="text" class="form-control col-md-3 mb-2 ml-2 mr-2" name="inputUsername"
-                                id="inputUsername" autofocus>
+                                id="inputUsername" [(ngModel)]="username" autofocus>
                             <label for="inputPassword" id="passwordLabel"
                                 class="allLabels ml-3 mr-3 form-control-label">Password</label>
                             <input type="password" class="form-control col-md-3 mb-2 ml-2 mr-2" name="inputPassword"
-                                id="inputPassword">
+                                id="inputPassword" [(ngModel)]="password">
                         </div>
                     </fieldset>
                 </div>
                 <div class="row">
                     <div id="buttonsDiv" class="col-md-12 text-center mt-2">
-                        <button class="col-md-2 btn btn-success btn-sm mb-1" type="submit" id="loginBtn">Log in</button>
-                        <button class="col-md-2 btn btn-primary btn-sm mb-1" type="button"
-                            id="registerBtn">Register</button>
+                        <button class="col-md-2 btn btn-success btn-sm mr-1 mb-1" type="submit" id="loginBtn" (click)="onLogin()">Log in</button>
+                        <a class="col-md-2 btn btn-primary btn-sm mb-1" href="/register" role="button">Register</a>
                     </div>
                 </div>
             </form>
@@ -41,7 +40,7 @@
         <!-- Alert Message for Invalid Data Section -->
         <section class="container-fluid">
             <div class="form-row d-flex justify-content-center">
-                <div class="alert alert-danger hidden col-md-3 mt-2" role="alert" id="invalidData"></div>
+                <div class="alert alert-danger col-md-3 mt-2" role="alert" id="errMsg" *ngIf="errorFound">{{errMsg}}</div>
             </div>
         </section>
 

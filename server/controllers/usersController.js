@@ -81,8 +81,8 @@ Controller.postUserLogin = (req, res) =>
                 res.json(user);
             } else
             {
-                res.statusCode = 403;
-                res.end('User Not Found.');
+                //res.statusCode = 403;
+                res.json({'error': 'User Not Found.'});
             }
         })
 

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { League } from './../models/league.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject, of} from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -9,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 
 export class LeagueService {
-  leagues: League[] = [];
+  leagues: Array<string> = [];
 
   private leaguesEndpoint: string = 'http://localhost:3000/leagues/data';
 	private httpOptions = {
