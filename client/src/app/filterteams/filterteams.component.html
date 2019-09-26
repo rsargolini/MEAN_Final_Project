@@ -1,86 +1,98 @@
-    <header class="container-fluid text-center col-12" id="pageContainer">
-        <h1 class="display-2" id="pageHeader">Connecticut Hockey League</h1>
-    </header>
+<header class="container-fluid text-center col-12" id="pageContainer">
+    <h1 class="display-2" id="pageHeader">Connecticut Hockey League</h1>
+</header>
 
-    <main>
+<main>
 
-        <!-- Division and/or Gender Filter Section -->
-        <section class="container-fluid">
-            <h2 class="col-12 text-center font-weight-bold" id="subtitles">Team Filter</h2>
-            <hr>
-            <div class="form-row d-flex justify-content-center">
-                <div class="form-group">
-                    <!-- Division and/or Gender Filter Fieldset -->
-                    <fieldset id="filterSet">
-                        <legend id="filterLegend" class="w-50 border border-dark mx-auto text-center">Filter by Division
-                            and/or Gender</legend>
-                        <label id="selectDivLabel" for="selectDivision" class="allLabels mr-3">Select Division:</label>
-                        <!-- Hockey Divisions (dynamically generated) -->
-                        <select id="selectDivision" autofocus>
-                            <option value="All" selected>All Divisions</option>
-                        </select>
-                        <label id="selectGenLabel" for="selectGender" class="allLabels ml-3 mr-3">Select Team
-                            Gender:</label>
-                        <select id="selectGender">
-                            <option value="All" selected>All Genders</option>
-                            <option value="Male">Male Only</option>
-                            <option value="Female">Female Only</option>
-                            <option value="Any">Coed</option>
-                        </select>
-                    </fieldset>
-                </div>
-            </div>
-
-            <!-- Add Team and Back Buttons -->
-            <div class="form-group text-center pt-2">
-                <button type="button" id="addTeamBtn" class="col-sm-2 btn btn-success btn-md mb-1">Add Team</button>
-            </div>
-            <hr>
-        </section>
-
-        <!-- Display Teams Table Section -->
-        <section class="container-fluid d-flex justify-content-center">
-            <table id="teams" class="tables table-striped table-bordered col-md-6">
-            </table>
-        </section>
-
-        <!-- Modal Delete Team Section -->
-        <div class="modal fade container-fluid" id="deleteTeamModal" tabindex="-1" role="dialog"
-            aria-labelledby="deleteTeamModalText" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <p class="modal-title" id="deleteTeamModalText"></p>
-                    </div>
-                    <div id="deleteModalBody" class="modal-body text-center">
-                    </div>
-                    <!-- Modal Delete Team Buttons -->
-                    <div class="modal-footer justify-content-center">
-                        <button id="confirmBtn" type="button" class="btn btn-success"
-                            data-dismiss="modal">Confirm</button>
-                        <button id="cancelBtn" type="button" class="btn btn-primary"
-                            data-dismiss="modal">Cancel</button>
-                    </div>
-                </div>
+    <!-- Division and/or Gender Filter Section -->
+    <section class="container-fluid">
+        <h2 class="col-12 text-center font-weight-bold" id="subtitles">Team Filter</h2>
+        <hr>
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group">
+                <!-- Division and/or Gender Filter Fieldset -->
+                <fieldset id="filterSet">
+                    <legend id="filterLegend" class="w-50 border border-dark mx-auto text-center">Filter by Division
+                        and/or Gender</legend>
+                    <label id="selectDivLabel" for="selectDivision" class="allLabels mr-3">Select Division:</label>
+                    <!-- Hockey Divisions (dynamically generated) -->
+                    <select id="selectDivision" autofocus>
+                        <option value="All" selected>All Divisions</option>
+                        <option *ngFor="let league of leagues" value="{{league.Code}}">{{league.Name}}</option>
+                    </select>
+                    <label id="selectGenLabel" for="selectGender" class="allLabels ml-3 mr-3">Select Team
+                        Gender:</label>
+                    <select id="selectGender">
+                        <option value="All" selected>All Genders</option>
+                        <option value="Male">Male Only</option>
+                        <option value="Female">Female Only</option>
+                        <option value="Any">Coed</option>
+                    </select>
+                </fieldset>
             </div>
         </div>
 
-        <!-- Modal Save Section -->
-        <div class="modal fade container-fluid" id="savedModal" tabindex="-1" role="dialog"
-            aria-labelledby="savedModalText" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div id="savedModalText" class="modal-body text-center">
-                        </div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+        <!-- Add Team and Back Buttons -->
+        <div class="form-group text-center pt-2">
+            <button type="button" id="addTeamBtn" class="col-sm-2 btn btn-success btn-md mb-1">Add Team</button>
+        </div>
+        <hr>
+    </section>
+
+    <!-- Display Teams Table Section -->
+    <section class="container-fluid d-flex justify-content-center">
+        <table id="teams" class="tables table-striped table-bordered col-md-6">
+            <thead>
+                <tr>
+                    <th>Team Name</th>
+                    <th>Division</th>
+                    <th>Manager Name</th>
+                    <th colspan="2" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of teams">
+                    <td>{{team.TeamName}}</td>
+                    <td>{{team.TeamName}}</td>
+                    <td>{{team.ManagerName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Modal Delete Team Section -->
+    <div class="modal fade container-fluid" id="deleteTeamModal" tabindex="-1" role="dialog"
+        aria-labelledby="deleteTeamModalText" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title" id="deleteTeamModalText"></p>
+                </div>
+                <div id="deleteModalBody" class="modal-body text-center">
+                </div>
+                <!-- Modal Delete Team Buttons -->
+                <div class="modal-footer justify-content-center">
+                    <button id="confirmBtn" type="button" class="btn btn-success" data-dismiss="modal">Confirm</button>
+                    <button id="cancelBtn" type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
+    </div>
 
-    </main>
+    <!-- Modal Save Section -->
+    <div class="modal fade container-fluid" id="savedModal" tabindex="-1" role="dialog" aria-labelledby="savedModalText"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div id="savedModalText" class="modal-body text-center">
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
+</main>

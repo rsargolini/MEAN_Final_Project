@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { LeagueService } from './providers/league.service';
+import { UserService } from './providers/user.service';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { FilterTeamsComponent } from './filterteams/filterteams.component';
+import { TeamService } from './providers/team.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'filterteams', component: FilterTeamsComponent}
 ];
 
@@ -24,6 +28,7 @@ const appRoutes: Routes = [
     HomeComponent,
     NavComponent,
     LoginComponent,
+    RegisterComponent,
     FilterTeamsComponent,
     FooterComponent
   ],
@@ -34,7 +39,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    LeagueService
+    LeagueService,
+    UserService,
+    TeamService
   ],
   bootstrap: [AppComponent]
 })

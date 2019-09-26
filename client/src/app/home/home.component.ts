@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LeagueService } from './../providers/league.service';
+import { LeagueService } from '../providers/league.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // call getLeagues() method in LeaguesService
+    // call getLeagues() method in Leagues Service
     this.leagueService.getLeagues().subscribe(data => {
       this.leagues = data;
     });
