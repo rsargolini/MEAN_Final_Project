@@ -1,0 +1,40 @@
+<header class="container-fluid text-center col-12" id="titleContainer">
+    <h1 class="display-4" id="siteHeader">Connecticut Hockey League</h1>
+</header>
+
+<main>
+
+    <!-- Image Section -->
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center mt-1">
+                <img id="indexpageimage" alt="Ice Hockey Image" class="img-fluid" src="assets/images/imagemain.jpg">
+                <hr>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hockey Divisions Section (dynamically generated) -->
+    <section class="container-fluid">
+        <h2 class="col-12 text-center font-weight-bold" id="subtitles">Divisions</h2>
+        <hr id="divisionsLine">
+        <div id="hockeyDivisions" class="row text-center mt-1">
+            <div *ngFor="let league of leagues" class="col-sm-3" id="{{league.Code}}">
+                <h2>{{league.Name}}</h2>
+                <p>{{league.Description}}</p>
+            </div> 
+        </div>
+    </section>
+
+    <!-- Links Section -->
+    <section class="container-fluid">
+        <hr>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a class="col-md-2 btn btn-success btn-lg mb-1 mr-1 mt-1" href="/users/login" role="button">Login</a>
+                <a class="col-md-2 btn btn-primary btn-lg mb-1 mt-1" href="/users/register" role="button">Register</a>
+            </div>
+        </div>
+    </section>
+
+</main>

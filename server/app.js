@@ -4,7 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
-const hbs = require('hbs');
 const bodyParser = require('body-parser');
 
 const indexRouter = require('./routes/index');
@@ -20,17 +19,14 @@ const adminRouter = require('./routes/admin');
 
 var app = express();
 
-// Register HBS Partials
-hbs.registerPartials(__dirname + '/views/partials');
-
-// View Engine Setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-
-// HBS Partial Helper
-hbs.registerHelper('getCurrentYear', () =>
-{
-    return new Date().getFullYear();
+// enable CORS
+// Since we're not serving page from Node, you'll get the following error if CORS isn't "enbaled"
+// Failed to load http://localhost:3000/login/:
+// No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
 });
 
 // Middleware
