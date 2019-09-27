@@ -16,8 +16,8 @@
             <li *ngIf="isAuthenticated" class="nav-item">
                 <a class="nav-link" href="/newteam">Add Team</a>
             </li>
-            <li *ngIf="isAuthenticated" class="nav-item">
-                <a class="nav-link" href="/editprofile">Edit Profile</a>
+            <li class="nav-item">
+                <a class="nav-link" (click)="navEditProfile()">Edit Profile</a>
             </li>
             <li *ngIf="isAuthenticated" class="nav-item">
                 <a class="nav-link" href="/admin">Admin</a>
