@@ -9,8 +9,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  private isAuthenticated: boolean = false;
-
   sub: any;
   userid: number = 0;
 
@@ -21,8 +19,6 @@ export class NavComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.isAuthenticated = this.userService.getAuth();
-
     // get userid from Query Params
     this.sub = this.route
       .queryParams
@@ -31,9 +27,37 @@ export class NavComponent implements OnInit {
       })
   };
 
-  navEditProfile(): void {
+  isAuth(): boolean {
+    return this.userService.getAuth();
+  }
+
+  onLogin(): void {
+    this.router.navigate(['login']);
+  }
+
+  onRegister(): void {
+    this.router.navigate(['register']);
+  }
+
+  onAddTeam(): void {
+    this.router.navigate(['newteam']);
+  }
+
+  onEditProfile(): void {
     this.router.navigate(['editprofile'], {
       queryParams: { userid: this.userid }
     })
+  }
+
+  onAdmin(): void {
+    this.router.navigate(['admin'], {
+      queryParams: { userid: this.userid }
+    })
+  }
+
+  onLogout(): void {
+    this.userService.setAuth(false);
+    this.userService.setAdmin(false);
+    this.router.navigate(['login']);
   }
 }

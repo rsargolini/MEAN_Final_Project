@@ -7,23 +7,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navBar">
         <ul id="navbarLinks" class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+            <li *ngIf="!isAuth()" class="nav-item">
+                <a class="btn nav-link" (click)="onLogin()">Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/register">Register</a>
+            <li *ngIf="!isAuth()" class="nav-item">
+                <a class="btn nav-link" (click)="onRegister()">Register</a>
             </li>
-            <li *ngIf="isAuthenticated" class="nav-item">
-                <a class="nav-link" href="/newteam">Add Team</a>
+            <li *ngIf="isAuth()" class="nav-item">
+                <a class="btn nav-link" (click)="onAddTeam()">Add Team</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" (click)="navEditProfile()">Edit Profile</a>
+            <li *ngIf="isAuth()" class="nav-item">
+                <a class="btn nav-link" (click)="onEditProfile()">Edit Profile</a>
             </li>
-            <li *ngIf="isAuthenticated" class="nav-item">
-                <a class="nav-link" href="/admin">Admin</a>
+            <li *ngIf="isAuth()" class="nav-item">
+                <a class="btn nav-link" (click)="onAdmin()">Admin</a>
             </li>
-            <li *ngIf="isAuthenticated" class="nav-item">
-                <a class="nav-link" href="/logout">Log Out</a>
+            <li *ngIf="isAuth()" class="nav-item">
+                <a class="btn nav-link" (click)="onLogOut()">Log Out</a>
             </li>
         </ul>
     </div>
