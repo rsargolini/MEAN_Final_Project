@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { TeamService } from './../providers/team.service';
 import { LeagueService } from '../providers/league.service';
 
@@ -16,6 +18,7 @@ export class FilterTeamsComponent implements OnInit {
   constructor(
     private teamService: TeamService, 
     private leagueService: LeagueService,
+    private router: Router
   ) { }
 
   ngOnInit() {

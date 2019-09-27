@@ -1,0 +1,10 @@
+/* Filter Teams Page - Fieldset */
+#filterSet {
+    border: thin solid;
+    padding: 1em;
+}
+
+/* Filter Teams Page - All Buttons */
+.teamsBtn, .playersBtn {
+    text-align: center;   
+}

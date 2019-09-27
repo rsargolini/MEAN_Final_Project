@@ -1,0 +1,38 @@
+<header class="container-fluid text-center col-12" id="pageContainer">
+    <h1 class="display-2" id="pageHeader">Connecticut Hockey League</h1>
+</header>
+
+<main>
+    <!-- Registered Users Section -->
+    <section class="container-fluid">
+        <h2 class="col-12 text-center font-weight-bold" id="subtitles">Registered Users</h2>
+        <hr>
+    </section>
+
+    <!-- Display Registered Users Table Section -->
+    <section class="container-fluid d-flex justify-content-center">
+        <table id="regUsers" class="tables table-striped table-bordered col-md-6">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Email Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.USERNAME}}</td>
+                    <td>{{user.EMAIL}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Buttons Section -->
+    <section class="container-fluid">
+        <div class="row">
+            <div id="buttonsDiv" class="col-md-12 text-center mt-2">
+            </div>
+        </div>
+    </section>
+
+</main>

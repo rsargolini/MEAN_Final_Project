@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { LeagueService } from '../providers/league.service';
 
 @Component({
@@ -13,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private leagueService: LeagueService,
+    private router: Router
   ) { }
 
   ngOnInit() {
