@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 
+  userid: number = 0;
   username: string = '';
   password: string = '';
 
@@ -44,13 +45,13 @@ export class LoginComponent implements OnInit {
           this.errorFound = true;
           this.userService.setAuth(false);
           this.userService.setAdmin(false);
-        } else if (data.isAdmin) {
+        } else if (data.IS_ADMIN) {
           this.userService.setAdmin(true);
           this.userService.setAuth(true);
-          this.router.navigate(['filterteams']);
+          this.router.navigate(['filterteams'], { queryParams: { userid: data.ID } });
         } else {
           this.userService.setAuth(true);
-          this.router.navigate(['filterteams']);
+          this.router.navigate(['filterteams'], { queryParams: { userid: data.ID } });
         }
       });
     }

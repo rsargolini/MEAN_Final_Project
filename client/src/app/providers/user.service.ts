@@ -29,8 +29,18 @@ export class UserService {
       .pipe(map(res => <any[]>res));
   }
 
+  deleteUser(userId: number) {
+    return this.http.delete(`${this.usersEndpoint}data/${userId}`, this.httpOptions)
+      .pipe(map(res => <any[]>res));
+  }
+
   getUsers() : Observable<any> {
     return this.http.get(`${this.usersEndpoint}data`, this.httpOptions)
+    .pipe(map(res => <any[]>res));
+  }
+
+  getUser(userId: number) : Observable<any> {
+    return this.http.get(`${this.usersEndpoint}data/${userId}`, this.httpOptions)
     .pipe(map(res => <any[]>res));
   }
 
