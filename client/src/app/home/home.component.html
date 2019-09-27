@@ -1,3 +1,5 @@
+<app-nav></app-nav>
+
 <header class="container-fluid text-center col-12" id="titleContainer">
     <h1 class="display-4" id="siteHeader">Connecticut Hockey League</h1>
 </header>
@@ -31,8 +33,8 @@
         <hr>
         <div class="row">
             <div class="col-md-12 text-center">
-                <a class="col-md-2 btn btn-success btn-lg mb-1 mr-1 mt-1" href="/login" role="button">Login</a>
-                <a class="col-md-2 btn btn-primary btn-lg mb-1 mt-1" href="/register" role="button">Register</a>
+                <button class="col-md-2 btn btn-success btn-lg mb-1 mr-1 mt-1" type="button" id="loginBtn" (click)="onLogin()">Login</button>
+                <button class="col-md-2 btn btn-primary btn-lg mb-1 mr-1 mt-1" type="button" id="registerBtn" (click)="onRegister()">Register</button>
             </div>
         </div>
     </section>

@@ -24,4 +24,12 @@ export class HomeComponent implements OnInit {
       this.leagues = data;
     });
   }
+
+  onLogin(): void {
+    this.router.navigate(['login']);
+  }
+
+  onRegister(): void {
+    this.router.navigate(['register']);
+  }
 }

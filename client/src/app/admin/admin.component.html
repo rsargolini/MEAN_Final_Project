@@ -1,3 +1,5 @@
+<app-nav></app-nav>
+
 <header class="container-fluid text-center col-12" id="pageContainer">
     <h1 class="display-2" id="pageHeader">Connecticut Hockey League</h1>
 </header>
@@ -31,7 +33,7 @@
     <section class="container-fluid">
         <div class="row">
             <div id="buttonsDiv" class="col-md-12 text-center mt-2">
-                <a class="col-md-2 btn btn-success btn-sm mb-1 mr-1 mt-1" href="/filterteams" role="button">Back</a>
+                <button class="col-md-2 btn btn-primary btn-sm mb-1 mr-1 mt-1" type="button" id="backBtn" (click)="onBack()">Back</button>
             </div>
         </div>
     </section>
