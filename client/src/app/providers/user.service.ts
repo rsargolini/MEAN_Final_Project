@@ -14,21 +14,39 @@ export class UserService {
     })
   };
 
-  private authenticated: boolean = false;
+  private isAuthenticated: boolean = false;
+  private isAdmin: boolean = false;
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string) {
+  login(username: string, password: string)  : Observable<any> {
     return this.http.post(`${this.usersEndpoint}login`, {username : username, password : password}, this.httpOptions)
       .pipe(map(res => <any[]>res));
   }
   
-  register(username: string, password: string, email: string) {
+  register(username: string, password: string, email: string) : Observable<any> {
     return this.http.post(`${this.usersEndpoint}register`, { username: username, password: password, email: email }, this.httpOptions)
       .pipe(map(res => <any[]>res));
   }
 
-  setAuthStatus(status: boolean) {
-    this.authenticated = status;
+  getUsers() : Observable<any> {
+    return this.http.get(`${this.usersEndpoint}data`, this.httpOptions)
+    .pipe(map(res => <any[]>res));
+  }
+
+  setAuth(isAuth: boolean): void {
+    this.isAuthenticated = isAuth;
+  }
+
+  getAuth(): boolean {
+    return this.isAuthenticated;
+  }
+
+  setAdmin(isAdmin: boolean): void {
+    this.isAdmin = isAdmin;
+  }
+
+  getAdmin(): boolean {
+    return this.isAdmin;
   }
 }

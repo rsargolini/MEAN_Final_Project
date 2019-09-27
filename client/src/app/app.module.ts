@@ -14,12 +14,16 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FilterTeamsComponent } from './filterteams/filterteams.component';
 import { TeamService } from './providers/team.service';
+import { EditProfileComponent } from './editprofile/editprofile.component';
+import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'filterteams', component: FilterTeamsComponent}
+  {path: 'filterteams', component: FilterTeamsComponent},
+  {path: 'editprofile', component: EditProfileComponent},
+  {path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({
@@ -30,6 +34,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     FilterTeamsComponent,
+    EditProfileComponent,
+    AdminComponent,
     FooterComponent
   ],
   imports: [

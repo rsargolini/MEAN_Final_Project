@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { UserService } from './../providers/user.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { UserService } from './../providers/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   ngOnInit() { }
 
@@ -35,12 +39,17 @@ export class LoginComponent implements OnInit {
 
       // Call UserService to authenticate
       this.userService.login(this.username, this.password).subscribe(data => {
-        if (data ['error']) {
+        if (data['error']) {
           this.errMsg = 'Login unsuccessful.';
           this.errorFound = true;
-          this.userService.setAuthStatus(false);
+          this.userService.setAuth(false);
+          this.userService.setAdmin(false);
+        } else if (data.isAdmin) {
+          this.userService.setAdmin(true);
+          this.userService.setAuth(true);
+          this.router.navigate(['filterteams']);
         } else {
-          this.userService.setAuthStatus(true);
+          this.userService.setAuth(true);
           this.router.navigate(['filterteams']);
         }
       });

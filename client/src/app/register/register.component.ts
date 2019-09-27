@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { UserService } from './../providers/user.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { UserService } from './../providers/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(
+    private router: Router, 
+    private userService: UserService
+  ) { }
 
   ngOnInit() { }
 

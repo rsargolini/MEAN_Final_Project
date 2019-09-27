@@ -24,5 +24,4 @@ export class LeagueService {
     return this.http.get(this.leaguesEndpoint, this.httpOptions)
       .pipe(map(res => <any[]>res));
   }
-
 }
