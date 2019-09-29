@@ -32,8 +32,8 @@
                 </div>
                 <div class="row">
                     <div id="buttonsDiv" class="col-md-12 text-center mt-2">
-                        <button class="col-md-2 btn btn-success btn-sm mr-1 mb-1" type="submit" id="loginBtn" (click)="onLogin()">Log in</button>
-                        <a class="col-md-2 btn btn-primary btn-sm mb-1" href="/register" role="button">Register</a>
+                        <button class="col-md-2 btn btn-success btn-sm mb-1 mr-1 mt-1" type="button" id="loginBtn" (click)="onLogin()">Login</button>
+                        <button class="col-md-2 btn btn-primary btn-sm mb-1 mr-1 mt-1" type="button" id="registerBtn" (click)="onRegister()">Register</button>
                     </div>
                 </div>
             </form>
@@ -42,7 +42,7 @@
         <!-- Alert Message for Invalid Data Section -->
         <section class="container-fluid">
             <div class="form-row d-flex justify-content-center">
-                <div class="alert alert-danger col-md-3 mt-2" role="alert" id="errMsg" *ngIf="errorFound">{{errMsg}}</div>
+                <div class="alert alert-danger col-md-3 mt-2" role="alert" id="errMsg" *ngIf="errorFound" innerHtml={{errMsgs}}></div>
             </div>
         </section>
 

@@ -21,27 +21,29 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
 
-  errMsg: string = '';
+  errMsgs: Array<string> = [];
   errorFound: boolean = false;
 
   onLogin(): void {
-    if (this.username == '') {
-      this.errMsg = 'Missing User Name.';
-      this.errorFound = true;
-    } else if (this.password == '') {
-      this.errMsg = 'Missing Password.';
-      this.errorFound = true;
-    } else if (this.password.length < 8) {
-      this.errMsg = 'Password is at least 8 chars.';
-      this.errorFound = true;
-    } else {
-      this.errorFound = false;
-      this.errMsg = '';
+    this.errorFound = false;
+    this.errMsgs = [];
 
+    if (this.username.trim() == '') {
+      this.errMsgs.push('Missing User Name.' + '<br />');
+    }
+
+    if (this.password.trim() == '') {
+      this.errMsgs.push('Missing Password.' + '<br />');
+    }
+
+    if (this.errMsgs.length > 0) {
+      this.errorFound = true;
+    }
+    else {
       // Call UserService to authenticate
       this.userService.login(this.username, this.password).subscribe(data => {
         if (data['error']) {
-          this.errMsg = 'Login unsuccessful.';
+          this.errMsgs.push('Login unsuccessful.');
           this.errorFound = true;
           this.userService.setAuth(false);
           this.userService.setAdmin(false);
@@ -55,5 +57,9 @@ export class LoginComponent implements OnInit {
         }
       });
     }
+  }
+
+  onRegister(): void {
+    this.router.navigate(['register']);
   }
 }

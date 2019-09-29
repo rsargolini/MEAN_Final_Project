@@ -1,6 +1,6 @@
 <!-- Nav Bar Section -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-    <a class="navbar-brand" href="/">Home</a>
+    <a class="navbar-brand" (click)="onHome()">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@
             <li *ngIf="isAuth()" class="nav-item">
                 <a class="btn nav-link" (click)="onEditProfile()">Edit Profile</a>
             </li>
-            <li *ngIf="isAuth()" class="nav-item">
+            <li *ngIf="isAuth() && isAdmin()" class="nav-item">
                 <a class="btn nav-link" (click)="onAdmin()">Admin</a>
             </li>
             <li *ngIf="isAuth()" class="nav-item">
