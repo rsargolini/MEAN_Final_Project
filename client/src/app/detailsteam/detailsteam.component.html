@@ -10,7 +10,6 @@
     <section class="container-fluid">
         <h2 class="col-12 text-center font-weight-bold" id="subtitles">Team Details</h2>
         <hr>
-        <p id="requireNoteEdit">* required fields</p>
         <form id="teamDetailsForm" name="teamDetailsForm" action="#">
             <div class="d-flex justify-content-center">
                 <!-- Team Information Fieldset -->
@@ -19,29 +18,28 @@
                     </legend>
                     <div class="form-row justify-content-center">
                         <label for="teamid" class="allLabels mr-3">ID</label>
-                        <input type="text" class="form-control col-md-1 mb-2 ml-2 mr-2" name="teamid" id="teamid">
+                        <input type="text" class="form-control col-md-1 mb-2 ml-2 mr-2" name="teamid" id="teamid"
+                            [(ngModel)]="teamid">
                         <label for="teamname" id="nameLabel" class="allLabels ml-3 mr-3">Name</label>
-                        <input type="text" class="form-control col-md-2 mb-2 ml-2 mr-2" name="teamname" id="teamname">
+                        <input type="text" class="form-control col-md-2 mb-2 ml-2 mr-2" name="teamname" id="teamname"
+                            [(ngModel)]="teamname">
                         <label for="leaguecode" class="allLabels ml-3 mr-3">Division</label>
-                        <select id="leaguecode" class="form-control col-md-2 mb-2 ml-2 mr-2" name="leaguecode">
-                        </select>
+                        <input type="text" class="form-control col-md-2 mb-2 ml-2 mr-2" name="leaguecode"
+                            id="leaguecode" [(ngModel)]="leaguecode">
                         <label for="teamgender" class="allLabels ml-3 mr-3">Gender</label>
-                        <select id="teamgender" name="teamgender" class="form-control col-md-2 mb-2 ml-2 mr-2">
-                            <option value="Male">Male Only</option>
-                            <option value="Female">Female Only</option>
-                            <option value="Any">Coed</option>
-                        </select>
+                        <input type="text" class="form-control col-md-2 mb-2 ml-2 mr-2" name="teamgender"
+                            id="teamgender" [(ngModel)]="teamgender">
                     </div>
                     <div class="form-row justify-content-center mt-2">
                         <label for="maxteammembers" id="maxPlayersLabel" class="allLabels mr-3">Max Players</label>
                         <input type="number" class="form-control col-md-1 mb-2 ml-2 mr-2" name="maxteammembers"
-                            id="maxteammembers">
+                            id="maxteammembers" [(ngModel)]="maxteammembers">
                         <label for="minmemberage" id="minAgeLabel" class="allLabels ml-3 mr-3">Min Age</label>
                         <input type="number" class="form-control col-md-1 mb-2 ml-2 mr-2" name="minmemberage"
-                            id="minmemberage">
+                            id="minmemberage" [(ngModel)]="minmemberage">
                         <label for="maxmemberage" id="maxAgeLabel" class="allLabels ml-3 mr-3">Max Age</label>
                         <input type="number" class="form-control col-md-1 mb-2 ml-2 mr-2" name="maxmemberage"
-                            id="maxmemberage">
+                            id="maxmemberage" [(ngModel)]="maxmemberage">
                     </div>
                 </fieldset>
             </div>
@@ -54,22 +52,17 @@
                     <div class="form-row justify-content-center">
                         <label for="managername" id="mgrNameLabel" class="allLabels mr-3">Name</label>
                         <input type="text" class="form-control col-md-2 mb-2 ml-2 mr-2" name="managername"
-                            id="managername">
+                            id="managername" [(ngModel)]="managername">
                         <label for="managerphone" id="mgrPhoneLabel" class="allLabels ml-3 mr-3">Phone</label>
                         <input type="text" class="form-control col-md-2 mb-2 ml-2 mr-2" name="managerphone"
-                            id="managerphone">
+                            id="managerphone" [(ngModel)]="managerphone">
                         <label for="manageremail" id="mgrEmailLabel" class="allLabels ml-3 mr-3">Email</label>
                         <input type="text" class="form-control col-md-3 mb-2 ml-2 mr-2" name="manageremail"
-                            id="manageremail">
+                            id="manageremail" [(ngModel)]="manageremail">
                     </div>
                 </fieldset>
             </div>
         </form>
-    </section>
-
-    <!-- Alert Message for Invalid Data Section -->
-    <section class="form-row d-flex justify-content-center">
-        <div class="alert alert-danger hidden col-md-3 ml-2 mr-2 mt-2" role="alert" id="invalidData"></div>
     </section>
 
     <!-- Buttons Section-->
@@ -86,12 +79,15 @@
         <div id="playersTitle">
             <h2 class="col-12 text-center font-weight-bold" id="subtitles2">Players</h2>
         </div>
-        <div id="addPlayerBtnDiv" class="col-12 text-center"></div>
+        <div id="addPlayerBtnDiv" class="col-12 text-center" *ngIf="!teamFull">
+            <button class="col-md-1 btn btn-success btn-md mb-2 mr-1" type="button" id="addPlayerBtn"
+                (click)="onAddPlayer()">Add Player</button>
+        </div>
     </section>
 
     <!-- Team Full Message Section -->
     <section class="container-fluid d-flex justify-content-center">
-        <div id="teamFullDiv" class="col-12 text-center font-weight-bold">
+        <div id="teamFullDiv" class="col-12 text-center font-weight-bold" *ngIf="teamFull">
             <p id="teamFullMessage">Team is Full</p>
         </div>
     </section>
@@ -99,6 +95,18 @@
     <!-- Display Players Table Section -->
     <section class="container-fluid d-flex justify-content-center">
         <table id="players" class="tables table-striped table-bordered col-md-6">
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Email Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let player of players">
+                    <td>{{player.MemberName}}</td>
+                    <td>{{player.Email}}</td>
+                </tr>
+            </tbody>
         </table>
     </section>
 

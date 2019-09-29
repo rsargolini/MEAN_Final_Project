@@ -7,7 +7,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TeamService {
-  teams: Array<string> = [];
 
   private teamsEndpoint: string = 'http://localhost:3000/teams/data';
 	private httpOptions = {
@@ -22,5 +21,10 @@ export class TeamService {
   getTeams(): Observable<any> {
     return this.http.get(this.teamsEndpoint, this.httpOptions)
       .pipe(map(res => <any[]>res));
+  }
+
+  getTeam(teamId: number) : Observable<any> {
+    return this.http.get(`${this.teamsEndpoint}/${teamId}`, this.httpOptions)
+    .pipe(map(res => <any[]>res));
   }
 }
