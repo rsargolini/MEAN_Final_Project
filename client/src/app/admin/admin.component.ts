@@ -25,6 +25,11 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (!this.userService.getAuth() || !this.userService.getAdmin())
+    {
+      this.router.navigate(['login']);
+    }
+
     this.sub = this.route
       .queryParams
       .subscribe(params => {

@@ -29,6 +29,11 @@ export class UserService {
       .pipe(map(res => <any[]>res));
   }
 
+  updateUser(userId: number, email: string) : Observable<any> {
+    return this.http.put(`${this.usersEndpoint}data/${userId}`, { email: email }, this.httpOptions)
+      .pipe(map(res => <any[]>res));
+  }
+
   deleteUser(userId: number) {
     return this.http.delete(`${this.usersEndpoint}data/${userId}`, this.httpOptions)
       .pipe(map(res => <any[]>res));

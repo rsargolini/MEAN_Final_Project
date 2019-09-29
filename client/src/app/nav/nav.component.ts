@@ -31,6 +31,14 @@ export class NavComponent implements OnInit {
     return this.userService.getAuth();
   }
 
+  isAdmin(): boolean {
+    return this.userService.getAdmin();
+  }
+
+  onHome(): void {
+    this.router.navigate(['/']);
+  }
+
   onLogin(): void {
     this.router.navigate(['login']);
   }
@@ -55,7 +63,7 @@ export class NavComponent implements OnInit {
     })
   }
 
-  onLogout(): void {
+  onLogOut(): void {
     this.userService.setAuth(false);
     this.userService.setAdmin(false);
     this.router.navigate(['login']);

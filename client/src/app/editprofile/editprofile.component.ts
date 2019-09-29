@@ -19,6 +19,8 @@ export class EditProfileComponent implements OnInit {
   errMsg: string = '';
   errorFound: boolean = false;
 
+  display = 'none';
+
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
@@ -26,6 +28,10 @@ export class EditProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (!this.userService.getAuth()) {
+      this.router.navigate(['login']);
+    }
+
     this.sub = this.route
       .queryParams
       .subscribe(params => {
@@ -39,9 +45,30 @@ export class EditProfileComponent implements OnInit {
   }
 
   onSave(): void {
-    this.router.navigate(['filterteams'], {
-      queryParams: { userid: this.userid }
-    })
+    if (this.email == '') {
+      this.errMsg = 'Missing Email Address.';
+      this.errorFound = true;
+    } else {
+      this.errorFound = false;
+      this.errMsg = '';
+
+      // Call UserService to Eidt Profile
+      this.userService.updateUser(this.userid, this.email).subscribe(data => {
+        if (data['errorFound']) {
+          this.errMsg = 'Update unsuccessful.';
+          this.errorFound = true;
+        } else {
+          this.userService.getUser(this.userid).subscribe(data => {
+            this.username = data.USERNAME;
+            this.email = data.EMAIL;
+          })
+        }
+      });
+    }
+  }
+
+  openModal(){
+    this.display = "block";
   }
 
   // Call UserService to Delete User Profile
