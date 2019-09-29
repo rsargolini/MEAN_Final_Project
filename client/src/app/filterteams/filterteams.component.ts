@@ -39,7 +39,8 @@ export class FilterTeamsComponent implements OnInit {
     });
   }
 
-  onDetails(): void {
+  onDetails(teamId): void {
       this.router.navigate(['detailsteam']);
+      this.router.navigate(['detailsteam'], { queryParams: { teamid: teamId } });
     };
   }
