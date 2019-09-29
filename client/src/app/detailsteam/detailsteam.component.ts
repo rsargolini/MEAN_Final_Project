@@ -6,28 +6,29 @@ import { LeagueService } from '../providers/league.service';
 import { UserService } from './../providers/user.service';
 
 @Component({
-  selector: 'app-filterteams',
-  templateUrl: './filterteams.component.html',
-  styleUrls: ['./filterteams.component.css']
+  selector: 'app-detailsteam',
+  templateUrl: './detailsteam.component.html',
+  styleUrls: ['./detailsteam.component.css']
 })
-export class FilterTeamsComponent implements OnInit {
+export class DetailsTeamComponent implements OnInit {
 
   // Array to hold Teams Objects
   teams: Array<string> = [];
   leagues: Array<string> = [];
 
   constructor(
-    private teamService: TeamService,
+    private teamService: TeamService, 
     private leagueService: LeagueService,
     private userService: UserService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    if (!this.userService.getAuth()) {
+    if (!this.userService.getAuth())
+    {
       this.router.navigate(['login']);
     }
-
+    
     // call getLeagues() method in Leagues Service
     this.leagueService.getLeagues().subscribe(data => {
       this.leagues = data;
@@ -38,8 +39,4 @@ export class FilterTeamsComponent implements OnInit {
       this.teams = data;
     });
   }
-
-  onDetails(): void {
-      this.router.navigate(['detailsteam']);
-    };
-  }
+}

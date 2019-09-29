@@ -16,6 +16,7 @@ import { FilterTeamsComponent } from './filterteams/filterteams.component';
 import { TeamService } from './providers/team.service';
 import { EditProfileComponent } from './editprofile/editprofile.component';
 import { AdminComponent } from './admin/admin.component';
+import { DetailsTeamComponent } from './detailsteam/detailsteam.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'filterteams', component: FilterTeamsComponent},
   {path: 'editprofile', component: EditProfileComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  {path: 'detailsteam', component: DetailsTeamComponent}
 ];
 
 @NgModule({
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
     FilterTeamsComponent,
     EditProfileComponent,
     AdminComponent,
+    DetailsTeamComponent,
     FooterComponent
   ],
   imports: [

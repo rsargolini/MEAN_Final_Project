@@ -19,8 +19,6 @@ export class EditProfileComponent implements OnInit {
   errMsg: string = '';
   errorFound: boolean = false;
 
-  display = 'none';
-
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
@@ -45,7 +43,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   onSave(): void {
-    if (this.email == '') {
+    if (this.email.trim() == '') {
       this.errMsg = 'Missing Email Address.';
       this.errorFound = true;
     } else {
@@ -65,10 +63,6 @@ export class EditProfileComponent implements OnInit {
         }
       });
     }
-  }
-
-  openModal(){
-    this.display = "block";
   }
 
   // Call UserService to Delete User Profile
