@@ -8,6 +8,8 @@ import { map } from 'rxjs/operators';
 })
 export class TeamService {
 
+  selectedTeamId: number = 0;
+
   private teamsEndpoint: string = 'http://localhost:3000/teams/data';
 	private httpOptions = {
     headers: new HttpHeaders({

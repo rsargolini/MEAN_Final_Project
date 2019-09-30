@@ -97,8 +97,8 @@ export class FilterTeamsComponent implements OnInit {
   }
 
   onDetails(teamId): void {
+    this.teamService.selectedTeamId = teamId;
     this.router.navigate(['detailsteam']);
-    this.router.navigate(['detailsteam'], { queryParams: { teamid: teamId } });
   };
 
   onDelete(deletemodal, teamid, league, teamname): void {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { UserService } from '../providers/user.service';
 import { User } from '../models/user.model';
@@ -11,8 +11,6 @@ import { User } from '../models/user.model';
 })
 export class AdminComponent implements OnInit {
 
-  sub: any;
-
   userid: number = 0;
 
   // Array to hold Users Objects
@@ -20,21 +18,15 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit() {
-    if (!this.userService.getAuth() || !this.userService.getAdmin())
-    {
+    if (!this.userService.getAuth() || !this.userService.getAdmin()) {
       this.router.navigate(['login']);
     }
 
-    this.sub = this.route
-      .queryParams
-      .subscribe(params => {
-        this.userid = params['userid'];
-      });
+    this.userid = this.userService.loginUserId;
 
     this.userService.getUsers().subscribe(data => {
       data.forEach((user, index) => {
@@ -49,8 +41,6 @@ export class AdminComponent implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['filterteams'], {
-      queryParams: { userid: this.userid }
-    });
+    this.router.navigate(['filterteams']);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { TeamService } from './../providers/team.service';
 import { UserService } from './../providers/user.service';
@@ -10,8 +10,6 @@ import { UserService } from './../providers/user.service';
   styleUrls: ['./detailsteam.component.css']
 })
 export class DetailsTeamComponent implements OnInit {
-
-  sub: any;
 
   teamid: number = 0;
   teamname: string = '';
@@ -31,7 +29,6 @@ export class DetailsTeamComponent implements OnInit {
   constructor(
     private teamService: TeamService,
     private userService: UserService,
-    private route: ActivatedRoute,
     private router: Router
   ) { }
 
@@ -40,11 +37,7 @@ export class DetailsTeamComponent implements OnInit {
       this.router.navigate(['login']);
     }
 
-    this.sub = this.route
-      .queryParams
-      .subscribe(params => {
-        this.teamid = params['teamid'];
-      });
+    this.teamid = this.teamService.selectedTeamId;
 
     this.teamService.getTeam(this.teamid).subscribe(data => {
       this.teamid = data.TeamId;

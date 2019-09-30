@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../providers/user.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -9,23 +9,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  sub: any;
   userid: number = 0;
 
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute,
     private router: Router
   ) { }
 
-  ngOnInit() {
-    // get userid from Query Params
-    this.sub = this.route
-      .queryParams
-      .subscribe(params => {
-        this.userid = params['userid'];
-      })
-  };
+  ngOnInit() {};
 
   isAuth(): boolean {
     return this.userService.getAuth();
@@ -52,15 +43,11 @@ export class NavComponent implements OnInit {
   }
 
   onEditProfile(): void {
-    this.router.navigate(['editprofile'], {
-      queryParams: { userid: this.userid }
-    })
+    this.router.navigate(['editprofile'])
   }
 
   onAdmin(): void {
-    this.router.navigate(['admin'], {
-      queryParams: { userid: this.userid }
-    })
+    this.router.navigate(['admin'])
   }
 
   onLogOut(): void {

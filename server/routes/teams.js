@@ -14,12 +14,4 @@ teamsRouter.get('/data', teamsController.getTeamsData);
 // http://localhost:3000/teams/data/:id
 teamsRouter.delete('/data/:id', teamsController.deleteTeamData);
 
-// ADD Team. */
-// http://localhost:3000/teams/data
-teamsRouter.post('/data', teamsController.addTeamData);
-
-// ADD Player to a Team. */
-// http://localhost:3000/teams/data/:id/members/data
-teamsRouter.post('/data/:id/members/data', teamsController.addPlayerData);
-
 module.exports = teamsRouter;

@@ -14,9 +14,6 @@
                 <a class="btn nav-link" (click)="onRegister()">Register</a>
             </li>
             <li *ngIf="isAuth()" class="nav-item">
-                <a class="btn nav-link" (click)="onAddTeam()">Add Team</a>
-            </li>
-            <li *ngIf="isAuth()" class="nav-item">
                 <a class="btn nav-link" (click)="onEditProfile()">Edit Profile</a>
             </li>
             <li *ngIf="isAuth() && isAdmin()" class="nav-item">
