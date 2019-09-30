@@ -1,0 +1,12 @@
+/* All Pages - Website Title Container */
+#titleContainer, #pageContainer {
+    background-color: black;
+    padding-top: 4rem;
+    padding-bottom: .5rem;
+}
+
+/* All Pages - Website Site Header */
+#siteHeader {
+    font-size: 40px; 
+}
+

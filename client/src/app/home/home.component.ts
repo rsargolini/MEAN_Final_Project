@@ -1,6 +1,6 @@
+// Imports
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { LeagueService } from '../providers/league.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { LeagueService } from '../providers/league.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
 
   // Array to hold Leagues Objects
@@ -19,16 +20,19 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // call getLeagues() method in Leagues Service
+
+    // Get All Leagues
     this.leagueService.getLeagues().subscribe(data => {
       this.leagues = data;
     });
   }
 
+  // Log On Button Click - Redirect to Login Page
   onLogin(): void {
     this.router.navigate(['login']);
   }
 
+  // Register Button Click - Redirect to Register Page
   onRegister(): void {
     this.router.navigate(['register']);
   }

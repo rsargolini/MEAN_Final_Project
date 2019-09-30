@@ -1,7 +1,3 @@
-<header class="container-fluid text-center col-12" id="pageContainer">
-    <h1 class="display-2" id="pageHeader">Connecticut Hockey League</h1>
-</header>
-
 <main>
 
     <!-- Division and/or Gender Filter Section -->
@@ -16,7 +12,8 @@
                         and/or Gender</legend>
                     <label id="selectDivLabel" for="selectDivision" class="allLabels mr-3">Select Division:</label>
                     <!-- Hockey Divisions (dynamically generated) -->
-                    <select id="selectDivision" (change)="onSelectedDiv($event.target.value)" [(ngModel)]="division" autofocus>
+                    <select id="selectDivision" (change)="onSelectedDiv($event.target.value)" [(ngModel)]="division"
+                        autofocus>
                         <option value="All" selected>All Divisions</option>
                         <option *ngFor="let league of leagues" value="{{league.Code}}">{{league.Name}}</option>
                     </select>
@@ -63,7 +60,7 @@
                             <button class="btn btn-outline-success btn-sm" type="button" id={{filteredTeam.TeamId}}
                                 (click)="onDetails(filteredTeam.TeamId)"><i class="fa fa-edit"><span
                                         class="buttonText">Details</span></i>
-                            </button >
+                            </button>
                         </td>
                         <td class="teamsBtn">
                             <button class="btn btn-outline-danger btn-sm" type="button" id={{filteredTeam.TeamId}}
@@ -84,8 +81,8 @@
         </div>
     </section>
 
+    <!-- Modal Delete Team Section -->
     <ng-template #deletemodal let-modal>
-        <!-- Modal Delete Team Section -->
         <div class="modal-header text-danger">
             <p class="modal-title">Are you sure you want to delete this Team?</p>
         </div>

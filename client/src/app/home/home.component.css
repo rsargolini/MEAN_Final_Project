@@ -2,3 +2,9 @@
 #indexpageimage {
     border-radius: 25px;
 }
+
+/* Home Page - Division Titles */
+#Pro-Am, #Elite, #Minor {
+    border-right: black solid;
+    border-width: 1px;
+}

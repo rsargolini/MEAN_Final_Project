@@ -1,14 +1,9 @@
-<header class="container-fluid text-center col-12" id="pageContainer">
-    <h1 class="display-4" id="pageHeader">Connecticut Hockey League</h1>
-</header>
-
 <main>
 
     <!-- Login Form Section -->
     <section class="container-fluid">
         <h2 class="col-12 text-center font-weight-bold" id="subtitles">Login</h2>
         <hr>
-        <p id="requireNoteEdit">* required fields</p>
         <!-- Login Form Section -->
         <form id="loginForm" name="loginForm" action="#">
             <div class="d-flex justify-content-center">
@@ -19,8 +14,8 @@
                     </legend>
                     <div class="form-row justify-content-center mt-2 mb-2">
                         <label for="inputUsername" id="nameLabel" class="allLabels ml-3 mr-3">User Name</label>
-                        <input type="text" class="form-control col-md-3 mb-2 ml-2 mr-2" name="inputUsername"
-                            id="inputUsername" [(ngModel)]="username" autofocus>
+                        <input type="text" class="form-control col-md-3 mb-2 ml-2 mr-2" name="inputUsername" 
+                            id="inputUsername" [(ngModel)]="username">
                         <label for="inputPassword" id="passwordLabel"
                             class="allLabels ml-3 mr-3 form-control-label">Password</label>
                         <input type="password" class="form-control col-md-3 mb-2 ml-2 mr-2" name="inputPassword"

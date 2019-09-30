@@ -1,6 +1,6 @@
+// Imports
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { UserService } from '../providers/user.service';
 import { User } from '../models/user.model';
 
@@ -9,6 +9,7 @@ import { User } from '../models/user.model';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
+
 export class AdminComponent implements OnInit {
 
   userid: number = 0;
@@ -22,24 +23,21 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
+    // Redirect to Login Page if not Authenticated and Admin
     if (!this.userService.getAuth() || !this.userService.getAdmin()) {
       this.router.navigate(['login']);
     }
 
     this.userid = this.userService.loginUserId;
 
-    this.userService.getUsers().subscribe(data => {
-      data.forEach((user, index) => {
-        this.users.push(new User(user.ID, user.USER_NAME, user.EMAIL_ADDRESS, user.PASSWORD));
-      })
-    });
-
-    // call getUsers() method in User Service
+    // Get All Non-Admin Users
     this.userService.getUsers().subscribe(data => {
       this.users = data;
     });
   }
 
+  // Back Button Click - Redirect to Filter Teams Page
   onBack(): void {
     this.router.navigate(['filterteams']);
   }

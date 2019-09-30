@@ -1,3 +1,4 @@
+// Import Moduless
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -5,20 +6,25 @@ import { Routes, RouterModule }  from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+// Import Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
-import { LeagueService } from './providers/league.service';
-import { UserService } from './providers/user.service';
+import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FilterTeamsComponent } from './filterteams/filterteams.component';
-import { TeamService } from './providers/team.service';
 import { EditProfileComponent } from './editprofile/editprofile.component';
 import { AdminComponent } from './admin/admin.component';
 import { DetailsTeamComponent } from './detailsteam/detailsteam.component';
 
+// Import Services
+import { LeagueService } from './providers/league.service';
+import { UserService } from './providers/user.service';
+import { TeamService } from './providers/team.service';
+
+// Routes
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
@@ -40,7 +46,8 @@ const appRoutes: Routes = [
     EditProfileComponent,
     AdminComponent,
     DetailsTeamComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
