@@ -48,12 +48,14 @@ export class LoginComponent implements OnInit {
           this.userService.setAuth(false);
           this.userService.setAdmin(false);
         } else if (data.IS_ADMIN) {
+          this.userService.loginUserId = data.ID;
           this.userService.setAdmin(true);
           this.userService.setAuth(true);
-          this.router.navigate(['filterteams'], { queryParams: { userid: data.ID } });
+          this.router.navigate(['filterteams']);
         } else {
+          this.userService.loginUserId = data.ID;
           this.userService.setAuth(true);
-          this.router.navigate(['filterteams'], { queryParams: { userid: data.ID } });
+          this.router.navigate(['filterteams']);
         }
       });
     }

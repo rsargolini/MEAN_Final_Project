@@ -14,6 +14,8 @@ export class UserService {
     })
   };
 
+  loginUserId: number = 0;
+
   private isAuthenticated: boolean = false;
   private isAdmin: boolean = false;
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { UserService } from './../providers/user.service';
@@ -11,8 +11,6 @@ import { UserService } from './../providers/user.service';
 })
 export class EditProfileComponent implements OnInit {
 
-  sub: any;
-
   userid: number = 0;
   username: string = '';
   email: string = '';
@@ -22,7 +20,6 @@ export class EditProfileComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute,
     private router: Router,
     private modalService: NgbModal) { }
 
@@ -31,11 +28,7 @@ export class EditProfileComponent implements OnInit {
       this.router.navigate(['login']);
     }
 
-    this.sub = this.route
-      .queryParams
-      .subscribe(params => {
-        this.userid = params['userid'];
-      });
+    this.userid = this.userService.loginUserId;
 
     this.userService.getUser(this.userid).subscribe(data => {
       this.username = data.USERNAME;
@@ -81,8 +74,6 @@ export class EditProfileComponent implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['filterteams'], {
-      queryParams: { userid: this.userid }
-    })
+    this.router.navigate(['filterteams'])
   }
 }
