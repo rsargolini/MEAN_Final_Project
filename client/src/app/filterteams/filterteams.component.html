@@ -16,13 +16,13 @@
                         and/or Gender</legend>
                     <label id="selectDivLabel" for="selectDivision" class="allLabels mr-3">Select Division:</label>
                     <!-- Hockey Divisions (dynamically generated) -->
-                    <select id="selectDivision" [(ngModel)]="selectedDivision" autofocus>
+                    <select id="selectDivision" (change)="onSelectedDiv($event.target.value)" [(ngModel)]="division" autofocus>
                         <option value="All" selected>All Divisions</option>
                         <option *ngFor="let league of leagues" value="{{league.Code}}">{{league.Name}}</option>
                     </select>
                     <label id="selectGenLabel" for="selectGender" class="allLabels ml-3 mr-3">Select Team
                         Gender:</label>
-                    <select id="selectGender">
+                    <select id="selectGender" (change)="onSelectedGender($event.target.value)" [(ngModel)]="gender">
                         <option value="All" selected>All Genders</option>
                         <option value="Male">Male Only</option>
                         <option value="Female">Female Only</option>
@@ -54,26 +54,24 @@
                 </tr>
             </thead>
             <tbody>
-                <ng-container *ngFor="let team of teams">
-                    <ng-container *ngIf="team.League === 'Elite'">
-                        <tr>
-                            <td>{{team.TeamName}}</td>
-                            <td>{{team.League}}</td>
-                            <td>{{team.ManagerName}}</td>
-                            <td class="teamsBtn">
-                                <a class="btn btn-outline-success btn-sm" role="button" id={{team.TeamId}}
-                                    (click)="onDetails(team.TeamId)"><i class="fa fa-edit"><span
-                                            class="buttonText">Details</span></i>
-                                </a>
-                            </td>
-                            <td class="teamsBtn">
-                                <a class="btn btn-outline-danger btn-sm" role="button" id={{team.TeamId}}
-                                    (click)="onDelete(deletemodal, team.TeamId,team.League, team.TeamName)"><i
-                                        class="fa fa-trash-alt"><span class="buttonText">Delete</span></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </ng-container>
+                <ng-container *ngFor="let filteredTeam of filteredTeams">
+                    <tr>
+                        <td>{{filteredTeam.TeamName}}</td>
+                        <td>{{filteredTeam.League}}</td>
+                        <td>{{filteredTeam.ManagerName}}</td>
+                        <td class="teamsBtn">
+                            <button class="btn btn-outline-success btn-sm" type="button" id={{filteredTeam.TeamId}}
+                                (click)="onDetails(filteredTeam.TeamId)"><i class="fa fa-edit"><span
+                                        class="buttonText">Details</span></i>
+                            </button >
+                        </td>
+                        <td class="teamsBtn">
+                            <button class="btn btn-outline-danger btn-sm" type="button" id={{filteredTeam.TeamId}}
+                                (click)="onDelete(deletemodal, filteredTeam.TeamId, filteredTeam.League, filteredTeam.TeamName)"><i
+                                    class="fa fa-trash-alt"><span class="buttonText">Delete</span></i>
+                            </button>
+                        </td>
+                    </tr>
                 </ng-container>
             </tbody>
         </table>

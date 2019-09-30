@@ -14,27 +14,19 @@ import { UserService } from './../providers/user.service';
 export class FilterTeamsComponent implements OnInit {
 
   // Array to hold Teams Objects
-  teams: Array<string> = [];
-  leagues: Array<string> = [];
+  allTeams: Array<any> = [];
+  leagues: Array<any> = [];
+
+  filteredTeams: Array<any> = [];
 
   teamid: number = 0;
   league: string = '';
   teamname: string = '';
+  gender: string = 'All';
+  division: string = 'All';
 
   errMsg: string = '';
   errorFound: boolean = false;
-
-  // _selectedDivision = '';
-  // filteredTeams: Array<string> = [];
-
-  // get listFilter(): string {
-  //   return this._selectedDivision;
-  // }
-
-  // set listFilter(value: string) {
-  //   this._selectedDivision = value;
-  //   this.filteredTeams = this.listFilter ? this.doFilter(this.listFilter) :this.teams;
-  // }
 
   constructor(
     private teamService: TeamService,
@@ -42,9 +34,6 @@ export class FilterTeamsComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private modalService: NgbModal) { }
-
-  // this.filteredTeams = this.teams;
-  // this.listFilter = '';
 
   ngOnInit() {
     if (!this.userService.getAuth()) {
@@ -58,14 +47,54 @@ export class FilterTeamsComponent implements OnInit {
 
     // call getTeams() method in Teams Service
     this.teamService.getTeams().subscribe(data => {
-      this.teams = data;
+      this.allTeams = data;
+      this.filteredTeams = data;
     });
   }
 
-  //doFilter(filterBy: string): teams[] {
-  // return this.teams.filter((team: teams) =>
-  //   team.league.indexOf(filterBy) !== -1);
-  // }
+  onSelectedDiv(val: string): void {
+    if (val == "All" && this.gender == "All") {
+      this.filteredTeams = this.allTeams;
+    }
+    else {
+      if (this.gender == "All") {
+        this.filteredTeams = this.allTeams.filter(
+          allTeams => allTeams.League === val);
+      }
+      else {
+        if (val == "All") {
+          this.filteredTeams = this.allTeams.filter(
+            allTeams => allTeams.TeamGender === this.gender);
+        }
+        else {
+          this.filteredTeams = this.allTeams.filter(
+            allTeams => allTeams.League === val && allTeams.TeamGender === this.gender);
+        }
+      }
+    }
+  }
+
+  onSelectedGender(val: string): void {
+    if (val == "All" && this.division == "All") {
+      this.filteredTeams = this.allTeams;
+    }
+    else {
+      if (this.division == "All") {
+        this.filteredTeams = this.allTeams.filter(
+          allTeams => allTeams.TeamGender === val);
+      }
+      else {
+        if (val == "All") {
+          this.filteredTeams = this.allTeams.filter(
+            allTeams => allTeams.League === this.division);
+        }
+        else {
+          this.filteredTeams = this.allTeams.filter(
+            allTeams => allTeams.TeamGender === val && allTeams.League === this.division);
+        }
+      }
+    }
+  }
 
   onDetails(teamId): void {
     this.router.navigate(['detailsteam']);
@@ -82,9 +111,8 @@ export class FilterTeamsComponent implements OnInit {
   onOkDelete(): void {
     // call deleteTeam() method in Teams Service
     this.teamService.deleteTeam(this.teamid).subscribe(data => {
-        this.ngOnInit();
-      }
-    )
+      this.ngOnInit();
+    })
   };
 
   onLogOut(): void {
