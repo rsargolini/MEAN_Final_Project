@@ -1,5 +1,3 @@
-<app-nav></app-nav>
-
 <header class="container-fluid text-center col-12" id="pageContainer">
     <h1 class="display-4" id="pageHeader">Connecticut Hockey League</h1>
 </header>
@@ -32,9 +30,9 @@
             <div class="row">
                 <div id="buttonsDiv" class="col-md-12 text-center mt-2">
                     <button class="col-md-1 btn btn-success btn-lg mb-1 mr-1" type="submit" id="saveBtn"
-                        (click)="onSave()">Save</button>
+                        (click)="onSave(savemodal)">Save</button>
                     <button class="col-md-1 btn btn-danger btn-lg mb-1 mr-1" type="button" id="deleteBtn"
-                        (click)="onDelete()">Delete</button> 
+                        (click)="onDelete(deletemodal)">Delete</button>
                     <button class="col-md-1 btn btn-primary btn-lg mb-1" type="button" id="backBtn"
                         (click)="onBack()">Back</button>
                 </div>
@@ -49,43 +47,32 @@
         </div>
     </section>
 
-    <!-- Modal Delete User Account Section -->
-    <div class="modal fade container-fluid" id="deleteUserAccountModal" tabindex="-1" role="dialog" aria-labelledby=" deleteUserAccountText" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <p class="modal-title" id="deleteUserAccountText">
-                    </p>
-                </div>
-                <div id="deleteModalBody" class="modal-body text-center">
-                </div>
-                <!-- Modal Delete User Account Buttons -->
-                <div class="modal-footer justify-content-center">
-                    <button id="modalConfirmBtn" type="button" class="btn btn-success"
-                        data-dismiss="modal">Confirm</button>
-                    <button id="modalCancelBtn" type="button" class="btn btn-primary"
-                        data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
+    <ng-template #deletemodal let-modal>
+        <!-- Modal Delete Profile Section -->
+        <div class="modal-header text-danger">
+            <p class="modal-title">Are you sure you want to delete your User Profile?</p>
         </div>
-    </div>
+        <!-- Modal OK Button -->
+        <div class="modal-footer justify-content-center">
+            <button id="okBtn" type="button" class="btn btn-success" data-dismiss="modal" (click)="onOkDelete()"
+                (click)="modal.close('Ok click')">Confirm</button>
+            <button id="cancelBtn" type="button" class="btn btn-primary" data-dismiss="modal" (click)="modal.close('Ok click')">Cancel</button>
+        </div>
+    </ng-template>
 
-    <!-- Modal Save Update Profile Section -->
-    <div class="modal fade container-fluid" id="savedModal" tabindex="-1" role="dialog" aria-labelledby="savedModalText"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <p class="modal-title" id="savedModalText"></p>
-                </div>
-                <div id="modalBody" class="modal-body text-center">
-                </div>
-                <!-- Modal OK Button -->
-                <div class="modal-footer justify-content-center">
-                    <button id="okBtn" type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
-                </div>
-            </div>
+    <ng-template #savemodal let-modal>
+        <!-- Modal Save Update Profile Section -->
+        <div *ngIf="!errorFound" class="modal-header text-primary">
+            <p class="modal-title">User Profile has been successfully updated.</p>
         </div>
-    </div>
+        <div *ngIf="errorFound" class="modal-header text-danger">
+            <p class="modal-title">Update has failed, please try again.</p>
+        </div>
+        <!-- Modal OK Button -->
+        <div class="modal-footer justify-content-center">
+            <button id="okBtn" type="button" class="btn btn-success" data-dismiss="modal"
+                (click)="modal.close('Ok click')">Ok</button>
+        </div>
+    </ng-template>
 
 </main>

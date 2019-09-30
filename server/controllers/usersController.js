@@ -2,26 +2,6 @@ var userService = require('../services/userService');
 
 var Controller = {};
 
-// GET (Login Page): http://localhost:3000/users/login
-Controller.getLoginPage = (req, res) =>
-{
-    res.render('login');
-};
-
-// GET (Register Page): http://localhost:3000/users/register
-Controller.getRegisterPage = (req, res) =>
-{
-    res.render('register');
-};
-
-// GET: Logout
-Controller.getLogout = (req, res) =>
-{
-    req.session.userID = null;
-    req.session.isAdmin = null;
-    res.redirect('/');
-};
-
 // GET (Get User Data): http://localhost:3000/users/:id
 Controller.getUserData = (req, res) =>
 {
@@ -81,7 +61,6 @@ Controller.postUserLogin = (req, res) =>
                 res.json(user);
             } else
             {
-                //res.statusCode = 403;
                 res.json({'error': 'User Not Found.'});
             }
         })
@@ -138,14 +117,14 @@ Controller.updateUserProfile = (req, res) =>
                 res.json(user);
             } else
             {
-                res.end('User Profile not updated.');
+                res.json({'error': 'User Profile not updated.'});
             }
         })
         .catch((err) =>
         {
             res.statusCode = 403;
             console.log(`Updating User Profile error: ${err}`);
-            res.end('Updating User Profile error.');
+            res.json({'error': 'Updating User Profile error.'});
         });
 };
 
