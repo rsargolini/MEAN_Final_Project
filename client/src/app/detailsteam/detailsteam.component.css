@@ -1,0 +1,10 @@
+/* Team Details Page */
+.titleColumn {
+    font-weight: bold;
+}
+
+/* Team Details Page - Full Message */
+#teamFullMessage {
+    font-size: 20px;
+    color: red;
+}

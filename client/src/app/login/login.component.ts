@@ -1,6 +1,6 @@
+// Imports
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { UserService } from './../providers/user.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { UserService } from './../providers/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   constructor(
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
 
+  // Error Messages
   errMsgs: Array<string> = [];
   errorFound: boolean = false;
 
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.errorFound = false;
     this.errMsgs = [];
 
+    // Login Fields Validation
     if (this.username.trim() == '') {
       this.errMsgs.push('Missing User Name');
     }
@@ -40,7 +43,7 @@ export class LoginComponent implements OnInit {
       this.errorFound = true;
     }
     else {
-      // Call UserService to authenticate
+      // Login Authentication by User Name and Password
       this.userService.login(this.username, this.password).subscribe(data => {
         if (data['error']) {
           this.errMsgs.push('Login unsuccessful');
@@ -61,6 +64,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // Register Button Click - Redirect to Register Page
   onRegister(): void {
     this.router.navigate(['register']);
   }

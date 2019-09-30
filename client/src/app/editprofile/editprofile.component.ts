@@ -1,7 +1,7 @@
+// Imports
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
 import { UserService } from './../providers/user.service';
 
 @Component({
@@ -9,12 +9,14 @@ import { UserService } from './../providers/user.service';
   templateUrl: './editprofile.component.html',
   styleUrls: ['./editprofile.component.css']
 })
+
 export class EditProfileComponent implements OnInit {
 
   userid: number = 0;
   username: string = '';
   email: string = '';
 
+  // Error Messages
   errMsg: string = '';
   errorFound: boolean = false;
 
@@ -24,18 +26,22 @@ export class EditProfileComponent implements OnInit {
     private modalService: NgbModal) { }
 
   ngOnInit() {
+
+    // Redirect to Login Page if not Authenticated
     if (!this.userService.getAuth()) {
       this.router.navigate(['login']);
     }
 
     this.userid = this.userService.loginUserId;
 
+    // Get User Details by User ID
     this.userService.getUser(this.userid).subscribe(data => {
       this.username = data.USERNAME;
       this.email = data.EMAIL;
     })
   }
 
+  // Save Button Click - Validate Updates and Update Profile
   onSave(savemodal): void {
     if (this.email.trim() == '') {
       this.errMsg = 'Missing Email Address.';
@@ -43,7 +49,7 @@ export class EditProfileComponent implements OnInit {
     } else {
       this.errorFound = false;
       this.errMsg = '';
-      // Call UserService to Eidt Profile
+      // Put User Profile Details by Team ID
       this.userService.updateUser(this.userid, this.email).subscribe(data => {
         if (data['error']) {
           this.errMsg = 'Update unsuccessful.';
@@ -55,11 +61,12 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
+  // Delete Button Click - Display Delete Confirmation Modal
   onDelete(deletemodal): void {
     this.modalService.open(deletemodal, { ariaLabelledBy: 'modal-basic-title' })
   };
 
-  // Call UserService to Delete User Profile
+  // Confirmation Delete Click - Delete User Profile by User ID
   onOkDelete(): void {
     this.userService.deleteUser(this.userid).subscribe(data => {
       if (data['error']) {
@@ -73,6 +80,7 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
+  // Back Button Click - Redirect to Filter Teams Page
   onBack(): void {
     this.router.navigate(['filterteams'])
   }

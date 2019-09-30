@@ -1,7 +1,7 @@
+// Imports
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
 import { TeamService } from './../providers/team.service';
 import { LeagueService } from '../providers/league.service';
 import { UserService } from './../providers/user.service';
@@ -11,6 +11,7 @@ import { UserService } from './../providers/user.service';
   templateUrl: './filterteams.component.html',
   styleUrls: ['./filterteams.component.css']
 })
+
 export class FilterTeamsComponent implements OnInit {
 
   // Array to hold Teams Objects
@@ -25,6 +26,7 @@ export class FilterTeamsComponent implements OnInit {
   gender: string = 'All';
   division: string = 'All';
 
+  // Error Messages
   errMsg: string = '';
   errorFound: boolean = false;
 
@@ -36,22 +38,25 @@ export class FilterTeamsComponent implements OnInit {
     private modalService: NgbModal) { }
 
   ngOnInit() {
+
+    // Redirect to Login Page if not Authenticated
     if (!this.userService.getAuth()) {
       this.router.navigate(['login']);
     }
 
-    // call getLeagues() method in Leagues Service
+    // Get All Leagues
     this.leagueService.getLeagues().subscribe(data => {
       this.leagues = data;
     });
 
-    // call getTeams() method in Teams Service
+    // Get All Teams
     this.teamService.getTeams().subscribe(data => {
       this.allTeams = data;
       this.filteredTeams = data;
     });
   }
 
+  // Selected Division Drop-down Change - Filter All Teams Array
   onSelectedDiv(val: string): void {
     if (val == "All" && this.gender == "All") {
       this.filteredTeams = this.allTeams;
@@ -74,6 +79,7 @@ export class FilterTeamsComponent implements OnInit {
     }
   }
 
+  // Selected Gender Drop-down Change - Filter All Teams Array
   onSelectedGender(val: string): void {
     if (val == "All" && this.division == "All") {
       this.filteredTeams = this.allTeams;
@@ -96,11 +102,13 @@ export class FilterTeamsComponent implements OnInit {
     }
   }
 
+  // Teams Details Button Click - Navigate to Details Team Page with Team ID
   onDetails(teamId): void {
     this.teamService.selectedTeamId = teamId;
     this.router.navigate(['detailsteam']);
   };
 
+  // Teams Delete Button Click - Display Delete Confirmation Modal
   onDelete(deletemodal, teamid, league, teamname): void {
     this.teamid = teamid;
     this.league = league;
@@ -108,6 +116,7 @@ export class FilterTeamsComponent implements OnInit {
     this.modalService.open(deletemodal, { ariaLabelledBy: 'modal-basic-title' })
   };
 
+  // Confirmation Delete Click - Delete Team by Team ID
   onOkDelete(): void {
     // call deleteTeam() method in Teams Service
     this.teamService.deleteTeam(this.teamid).subscribe(data => {
@@ -115,6 +124,7 @@ export class FilterTeamsComponent implements OnInit {
     })
   };
 
+  // Log Out Button Click - Redirect to Login Page
   onLogOut(): void {
     this.userService.setAuth(false);
     this.userService.setAdmin(false);

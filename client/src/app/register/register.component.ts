@@ -1,6 +1,6 @@
+// Imports
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { UserService } from './../providers/user.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { UserService } from './../providers/user.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
 
   constructor(
@@ -21,9 +22,11 @@ export class RegisterComponent implements OnInit {
   password: string = '';
   email: string = '';
 
+  // Error Messages
   errMsgs: Array<string> = [];
   errorFound: boolean = false;
 
+  // Register Button Click - Validate Registration Fields
   onRegister(): void {
     this.errorFound = false;
     this.errMsgs = [];
@@ -44,7 +47,7 @@ export class RegisterComponent implements OnInit {
       this.errorFound = true;
     }
     else {
-      // Call UserService to Register
+       // Register with User Name, Password and Email
       this.userService.register(this.username, this.password, this.email).subscribe(data => {
         if (data['errorFound']) {
           this.errMsgs.push('Registration unsuccessful');
@@ -57,6 +60,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  // Cancel Button Click - Redirect to Login Page
   onCancel(): void {
     this.router.navigate(['login']);
   }

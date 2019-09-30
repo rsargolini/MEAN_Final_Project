@@ -1,6 +1,6 @@
+// Imports
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { TeamService } from './../providers/team.service';
 import { UserService } from './../providers/user.service';
 
@@ -9,8 +9,10 @@ import { UserService } from './../providers/user.service';
   templateUrl: './detailsteam.component.html',
   styleUrls: ['./detailsteam.component.css']
 })
+
 export class DetailsTeamComponent implements OnInit {
 
+  // Variables for Team Information fields
   teamid: number = 0;
   teamname: string = '';
   leaguecode: string = '';
@@ -18,6 +20,8 @@ export class DetailsTeamComponent implements OnInit {
   maxteammembers: number = 0;
   minmemberage: number = 0;
   maxmemberage: number = 0;
+
+  // Variables for Manager Information fields
   managername: string = '';
   managerphone: string = '';
   manageremail: string = '';
@@ -33,12 +37,15 @@ export class DetailsTeamComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    // Redirect to Login Page if not Authenticated
     if (!this.userService.getAuth()) {
       this.router.navigate(['login']);
     }
 
     this.teamid = this.teamService.selectedTeamId;
 
+    // Get Team Details by Team ID
     this.teamService.getTeam(this.teamid).subscribe(data => {
       this.teamid = data.TeamId;
       this.teamname = data.TeamName;
@@ -59,9 +66,8 @@ export class DetailsTeamComponent implements OnInit {
     })
   }
 
+  // Back Button Click - Redirect to Filter Teams Page
   onBack(): void {
-    this.router.navigate(['filterteams'], {
-      queryParams: { teamid: this.teamid }
-    })
+    this.router.navigate(['filterteams'])
   }
 }
