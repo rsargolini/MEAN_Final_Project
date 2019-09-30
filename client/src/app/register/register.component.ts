@@ -29,15 +29,15 @@ export class RegisterComponent implements OnInit {
     this.errMsgs = [];
 
     if (this.username.trim() == '') {
-      this.errMsgs.push('Missing User Name.' + '<br />');
+      this.errMsgs.push('Missing User Name');
     }
 
     if (this.password.trim() == '') {
-      this.errMsgs.push('Missing Password.' + '<br />');
+      this.errMsgs.push('Missing Password');
     }
 
     if (this.email.trim() == '') {
-      this.errMsgs.push('Missing Email Address.' + '<br />');
+      this.errMsgs.push('Missing Email Address');
     }
 
     if (this.errMsgs.length > 0) {
@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
       // Call UserService to Register
       this.userService.register(this.username, this.password, this.email).subscribe(data => {
         if (data['errorFound']) {
-          this.errMsgs.push('Registration unsuccessful.');
+          this.errMsgs.push('Registration unsuccessful');
           this.errorFound = true;
         } 
         else {

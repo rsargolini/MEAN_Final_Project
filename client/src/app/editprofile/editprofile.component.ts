@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { UserService } from './../providers/user.service';
 
@@ -22,8 +23,8 @@ export class EditProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     if (!this.userService.getAuth()) {
@@ -42,35 +43,40 @@ export class EditProfileComponent implements OnInit {
     })
   }
 
-  onSave(): void {
+  onSave(savemodal): void {
     if (this.email.trim() == '') {
       this.errMsg = 'Missing Email Address.';
       this.errorFound = true;
     } else {
       this.errorFound = false;
       this.errMsg = '';
-
       // Call UserService to Eidt Profile
       this.userService.updateUser(this.userid, this.email).subscribe(data => {
-        if (data['errorFound']) {
+        if (data['error']) {
           this.errMsg = 'Update unsuccessful.';
           this.errorFound = true;
         } else {
-          this.userService.getUser(this.userid).subscribe(data => {
-            this.username = data.USERNAME;
-            this.email = data.EMAIL;
-          })
+          this.modalService.open(savemodal, { ariaLabelledBy: 'modal-basic-title' })
         }
       });
     }
   }
 
+  onDelete(deletemodal): void {
+    this.modalService.open(deletemodal, { ariaLabelledBy: 'modal-basic-title' })
+  };
+
   // Call UserService to Delete User Profile
-  onDelete(): void {
+  onOkDelete(): void {
     this.userService.deleteUser(this.userid).subscribe(data => {
-      this.userService.setAuth(false);
-      this.userService.setAdmin(false);
-      this.router.navigate(['/']);
+      if (data['error']) {
+        this.errMsg = 'Update unsuccessful.';
+        this.errorFound = true;
+      } else {
+        this.userService.setAuth(false);
+        this.userService.setAdmin(false);
+        this.router.navigate(['/']);
+      }
     });
   }
 

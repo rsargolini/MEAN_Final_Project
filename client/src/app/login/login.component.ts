@@ -29,11 +29,11 @@ export class LoginComponent implements OnInit {
     this.errMsgs = [];
 
     if (this.username.trim() == '') {
-      this.errMsgs.push('Missing User Name.' + '<br />');
+      this.errMsgs.push('Missing User Name');
     }
 
     if (this.password.trim() == '') {
-      this.errMsgs.push('Missing Password.' + '<br />');
+      this.errMsgs.push('Missing Password');
     }
 
     if (this.errMsgs.length > 0) {
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       // Call UserService to authenticate
       this.userService.login(this.username, this.password).subscribe(data => {
         if (data['error']) {
-          this.errMsgs.push('Login unsuccessful.');
+          this.errMsgs.push('Login unsuccessful');
           this.errorFound = true;
           this.userService.setAuth(false);
           this.userService.setAdmin(false);
