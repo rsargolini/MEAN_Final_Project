@@ -74,7 +74,7 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
-  onCancel(): void {
+  onBack(): void {
     this.router.navigate(['filterteams'], {
       queryParams: { userid: this.userid }
     })

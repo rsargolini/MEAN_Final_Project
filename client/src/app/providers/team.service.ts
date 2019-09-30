@@ -27,4 +27,9 @@ export class TeamService {
     return this.http.get(`${this.teamsEndpoint}/${teamId}`, this.httpOptions)
     .pipe(map(res => <any[]>res));
   }
+
+  deleteTeam(teamId: number) : Observable<any> {
+    return this.http.delete(`${this.teamsEndpoint}/${teamId}`, this.httpOptions)
+      .pipe(map(res => <any[]>res));
+  }
 }

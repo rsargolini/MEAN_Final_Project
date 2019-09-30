@@ -65,4 +65,10 @@ export class DetailsTeamComponent implements OnInit {
       }
     })
   }
+
+  onBack(): void {
+    this.router.navigate(['filterteams'], {
+      queryParams: { teamid: this.teamid }
+    })
+  }
 }

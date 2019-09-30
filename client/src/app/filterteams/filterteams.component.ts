@@ -40,7 +40,27 @@ export class FilterTeamsComponent implements OnInit {
   }
 
   onDetails(teamId): void {
-      this.router.navigate(['detailsteam']);
-      this.router.navigate(['detailsteam'], { queryParams: { teamid: teamId } });
-    };
+    this.router.navigate(['detailsteam']);
+    this.router.navigate(['detailsteam'], { queryParams: { teamid: teamId } });
+  };
+
+  onDelete(teamId): void {
+    // call deleteTeam() method in Teams Service
+    this.teamService.deleteTeam(teamId).subscribe(data => {
+      if (data['errorFound']) {
+
+      }
+      else {
+        this.teamService.getTeams().subscribe(data => {
+          this.teams = data;
+        })
+      }
+    })
+  };
+
+  onLogOut(): void {
+    this.userService.setAuth(false);
+    this.userService.setAdmin(false);
+    this.router.navigate(['login']);
   }
+};
