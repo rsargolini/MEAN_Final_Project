@@ -20,7 +20,7 @@
                     <!-- Hockey Divisions (dynamically generated) -->
                     <select id="selectDivision" autofocus>
                         <option value="All" selected>All Divisions</option>
-                        <option *ngFor="let league of leagues" value="{{league.Code}}">{{league.Name}}</option>
+                        <option *ngFor="let league of leagues">{{league.Name}}</option>
                     </select>
                     <label id="selectGenLabel" for="selectGender" class="allLabels ml-3 mr-3">Select Team
                         Gender:</label>
@@ -34,9 +34,12 @@
             </div>
         </div>
 
-        <!-- Add Team and Back Buttons -->
+        <!-- Add Team and Log Out Buttons -->
         <div class="form-group text-center pt-2">
-            <button type="button" id="addTeamBtn" class="col-sm-2 btn btn-success btn-md mb-1">Add Team</button>
+            <button class="col-md-1 btn btn-success btn-md mb-1 mr-1 mt-1" type="button" id="addTeamBtn"
+            (click)="onAddTeam()">Add Team</button>
+            <button class="col-md-1 btn btn-primary btn-md mb-1 mr-1 mt-1" type="button" id="backBtn"
+            (click)="onLogOut()">Log Out</button>
         </div>
         <hr>
     </section>
@@ -55,9 +58,20 @@
             <tbody>
                 <tr *ngFor="let team of teams">
                     <td>{{team.TeamName}}</td>
-                    <td>{{team.TeamName}}</td>
+                    <td>{{team.League}}</td>
                     <td>{{team.ManagerName}}</td>
-                    <td><a class="btn btn-outline-success btn-sm" role="button" id={{team.TeamId}} (click)="onDetails(team.TeamId)">Details</a></td>
+                    <td class="teamsBtn">
+                        <a class="btn btn-outline-success btn-sm" role="button" id={{team.TeamId}}
+                            (click)="onDetails(team.TeamId)"><i class="fa fa-edit"><span
+                                    class="buttonText">Details</span></i>
+                        </a>
+                    </td>
+                    <td class="teamsBtn">
+                        <a class="btn btn-outline-danger btn-sm" role="button" id={{team.TeamId}}
+                            (click)="onDelete(team.TeamId)"><i class="fa fa-trash-alt"><span
+                                    class="buttonText">Delete</span></i>
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>
