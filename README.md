@@ -1,3 +1,5 @@
+# MEAN Final Project
+
 # Connecticut Hockey League (CHL)
 
 ## About

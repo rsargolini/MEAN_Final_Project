@@ -1,4 +1,10 @@
-# Server
+# MEAN Final Project - Server
+
+## Technologies
++ Node.js
++ PostgreSQL
++ Express
++ Sequelize
 
 ## Create PostgreSQL User and DB
 + username: hca
