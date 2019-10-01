@@ -38,14 +38,14 @@ export class DetailsTeamComponent implements OnInit {
 
   ngOnInit() {
 
-    // Redirect to Login Page if not Authenticated
+    // Redirect to Login Page if not Authenticated (UserService)
     if (!this.userService.getAuth()) {
       this.router.navigate(['login']);
     }
 
     this.teamid = this.teamService.selectedTeamId;
 
-    // Get Team Details by Team ID
+    // Get Team Details by Team ID (TeamService)
     this.teamService.getTeam(this.teamid).subscribe(data => {
       this.teamid = data.TeamId;
       this.teamname = data.TeamName;

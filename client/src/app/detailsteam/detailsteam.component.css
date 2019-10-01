@@ -8,3 +8,24 @@
     font-size: 20px;
     color: red;
 }
+
+/* Team Details Pages - Fieldset Legends */
+#teamInfoLegend, #managerInfoLegend {
+    font-size: 15px;
+    font-weight: bold;
+    background-color: antiquewhite;
+}
+
+/* Team Details Pages - Fieldset Size */
+#managerInfoSet {
+    width: 1200px;
+    border: thin solid;
+    padding: 1px;
+}
+
+/* Team Details Page - Fieldsets Size */
+#teamInfoSet, #managerInfoSet {
+    width: 1050px;
+    border: thin solid;
+    padding: 1px;
+}

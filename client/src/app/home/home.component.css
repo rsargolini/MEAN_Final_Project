@@ -8,3 +8,10 @@
     border-right: black solid;
     border-width: 1px;
 }
+
+/* Media Queries */ 
+/* Home Page - Extra small devices (phones, 850px and down) */
+@media only screen and (max-width: 850px) {
+    #Pro-Am, #Elite, #Minor, #Recreational { border-right: none; border-top: solid; border-width: 1px;}
+    #divisionsLine {display: none;}
+}

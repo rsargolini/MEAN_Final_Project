@@ -1,12 +1,27 @@
-/* All Pages - Website Title Container */
+/* Header All Pages - Website Title Container */
 #titleContainer, #pageContainer {
     background-color: black;
     padding-top: 4rem;
     padding-bottom: .5rem;
 }
 
-/* All Pages - Website Site Header */
+/* Header All Pages - Website Site Header */
 #siteHeader {
     font-size: 40px; 
 }
 
+/* Media Queries */ 
+/* Header All Pages - Extra small devices (phones, 850px and down) */
+@media only screen and (max-width: 850px) {
+    #siteHeader {font-size: 20px; padding-top: .1rem;}
+}
+
+/* Header All Pages - Small devices (portrait tablets and large phones, 850px to 1050px) */
+@media only screen and (min-width: 850px) and (max-width: 1050px) {
+    #siteHeader {font-size: 25px; padding-top: .1rem;}
+}
+
+/* Header All Pages - Large devices (laptops/desktops, 1050px to 1255px) */
+@media only screen and (min-width: 1050px) and (max-width: 1255px) {
+    #siteHeader {font-size: 30px; padding-top: .5rem;}
+} 

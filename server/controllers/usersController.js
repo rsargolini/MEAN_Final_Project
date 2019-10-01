@@ -91,7 +91,7 @@ Controller.createUserProfile = (req, res) =>
                 res.json(user);
             } else
             {
-                res.end('User Profile not created.');
+                res.json({'error': 'User Profile not created.'});
             }
         })
         .catch((err) =>
@@ -139,7 +139,7 @@ Controller.deleteUserProfile = (req, res) =>
                 res.json(user);
             } else
             {
-                res.end('User Profile not deleted.');
+                res.json({'error': 'User Profile not deleted.'});
             }
         })
         .catch((err) =>

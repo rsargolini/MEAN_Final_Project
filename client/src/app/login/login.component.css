@@ -1,0 +1,13 @@
+/* Login Page - Fieldset Legends */
+#loginInfoLegend {
+    font-size: 15px;
+    font-weight: bold;
+    background-color: antiquewhite;
+}
+
+/* Login Page - Fieldset Size */
+#loginInfoSet {
+    width: 780px;
+    border: thin solid;
+    padding: 1px;
+}

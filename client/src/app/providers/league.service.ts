@@ -1,3 +1,4 @@
+// Imports
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject, of} from 'rxjs';
@@ -20,6 +21,7 @@ export class LeagueService {
   
   constructor(private http: HttpClient) { }
 
+  // Get All Leagues 
   getLeagues(): Observable<any> {
     return this.http.get(this.leaguesEndpoint, this.httpOptions)
       .pipe(map(res => <any[]>res));

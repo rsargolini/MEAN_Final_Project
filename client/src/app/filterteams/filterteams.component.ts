@@ -39,17 +39,17 @@ export class FilterTeamsComponent implements OnInit {
 
   ngOnInit() {
 
-    // Redirect to Login Page if not Authenticated
+    // Redirect to Login Page if not Authenticated (UserService)
     if (!this.userService.getAuth()) {
       this.router.navigate(['login']);
     }
 
-    // Get All Leagues
+    // Get All Leagues (LeagueService)
     this.leagueService.getLeagues().subscribe(data => {
       this.leagues = data;
     });
 
-    // Get All Teams
+    // Get All Teams (TeamService)
     this.teamService.getTeams().subscribe(data => {
       this.allTeams = data;
       this.filteredTeams = data;
@@ -102,13 +102,13 @@ export class FilterTeamsComponent implements OnInit {
     }
   }
 
-  // Teams Details Button Click - Navigate to Details Team Page with Team ID
+  // Teams Details Button Click - Navigate to Details Team Page with Team ID (TeamService)
   onDetails(teamId): void {
     this.teamService.selectedTeamId = teamId;
     this.router.navigate(['detailsteam']);
   };
 
-  // Teams Delete Button Click - Display Delete Confirmation Modal
+  // Teams Delete Button Click - Display Delete Confirmation Modal (ModalService)
   onDelete(deletemodal, teamid, league, teamname): void {
     this.teamid = teamid;
     this.league = league;
@@ -116,7 +116,7 @@ export class FilterTeamsComponent implements OnInit {
     this.modalService.open(deletemodal, { ariaLabelledBy: 'modal-basic-title' })
   };
 
-  // Confirmation Delete Click - Delete Team by Team ID
+  // Confirmation Delete Click - Delete Team by Team ID (TeamService)
   onOkDelete(): void {
     // call deleteTeam() method in Teams Service
     this.teamService.deleteTeam(this.teamid).subscribe(data => {

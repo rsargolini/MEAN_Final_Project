@@ -1,0 +1,13 @@
+/* Register Page - Fieldset Legends */
+#registerInfoLegend {
+    font-size: 15px;
+    font-weight: bold;
+    background-color: antiquewhite;
+}
+
+/* Register Page - Fieldsets Size */
+#registerInfoSet {
+    width: 1050px;
+    border: thin solid;
+    padding: 1px;
+}
