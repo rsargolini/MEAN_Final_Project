@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       this.errorFound = true;
     }
     else {
-      // Login Authentication by User Name and Password
+      // Login Authentication by User Name and Password (UserService)
       this.userService.login(this.username, this.password).subscribe(data => {
         if (data['error']) {
           this.errMsgs.push('Login unsuccessful');

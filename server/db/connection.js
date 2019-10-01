@@ -8,9 +8,6 @@ const sequelize = new Sequelize("hca", "hca", "password", {
 
 const Users = sequelize.import("../models/Users");
 
-//Automobiles.belongsTo(Manufacturers);
-//Manufacturers.hasMany(Automobiles);
-
 sequelize.authenticate().then(() => {
     console.log("connected");
 });

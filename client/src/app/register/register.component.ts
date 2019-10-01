@@ -47,9 +47,9 @@ export class RegisterComponent implements OnInit {
       this.errorFound = true;
     }
     else {
-       // Register with User Name, Password and Email
+       // Register with User Name, Password and Email (UserService)
       this.userService.register(this.username, this.password, this.email).subscribe(data => {
-        if (data['errorFound']) {
+        if (data['error']) {
           this.errMsgs.push('Registration unsuccessful');
           this.errorFound = true;
         } 

@@ -27,14 +27,14 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
 
-    // Redirect to Login Page if not Authenticated
+    // Redirect to Login Page if not Authenticated (UserService)
     if (!this.userService.getAuth()) {
       this.router.navigate(['login']);
     }
 
     this.userid = this.userService.loginUserId;
 
-    // Get User Details by User ID
+    // Get User Details by User ID (UserService)
     this.userService.getUser(this.userid).subscribe(data => {
       this.username = data.USERNAME;
       this.email = data.EMAIL;
@@ -49,28 +49,29 @@ export class EditProfileComponent implements OnInit {
     } else {
       this.errorFound = false;
       this.errMsg = '';
-      // Put User Profile Details by Team ID
+      // Put User Profile Details by Team ID (UserService)
       this.userService.updateUser(this.userid, this.email).subscribe(data => {
         if (data['error']) {
           this.errMsg = 'Update unsuccessful.';
           this.errorFound = true;
         } else {
+          this.ngOnInit();
           this.modalService.open(savemodal, { ariaLabelledBy: 'modal-basic-title' })
         }
       });
     }
   }
 
-  // Delete Button Click - Display Delete Confirmation Modal
+  // Delete Button Click - Display Delete Confirmation Modal (ModalService)
   onDelete(deletemodal): void {
     this.modalService.open(deletemodal, { ariaLabelledBy: 'modal-basic-title' })
   };
 
-  // Confirmation Delete Click - Delete User Profile by User ID
+  // Confirmation Delete Click - Delete User Profile by User ID (UserService)
   onOkDelete(): void {
     this.userService.deleteUser(this.userid).subscribe(data => {
       if (data['error']) {
-        this.errMsg = 'Update unsuccessful.';
+        this.errMsg = 'Delete unsuccessful.';
         this.errorFound = true;
       } else {
         this.userService.setAuth(false);

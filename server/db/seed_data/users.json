@@ -6,33 +6,45 @@
         "IS_ADMIN": 1
     },
     {
-        "USERNAME": "Ray",
-        "PASSWORD": "pass",
-        "EMAIL": "rsad@aol.com",
-        "IS_ADMIN": 0
-    },
-    {
-        "USERNAME": "Ray3",
-        "PASSWORD": "pass",
-        "EMAIL": "rsarg2@jkds.net",
-        "IS_ADMIN": 0
-    },
-    {
-        "USERNAME": "Ray2",
-        "PASSWORD": "pass",
-        "EMAIL": "rsargolini7777@sbcglobal.net",
-        "IS_ADMIN": 0
-    },
-    {
-        "USERNAME": "Ray5",
-        "PASSWORD": "pass",
-        "EMAIL": "rsargolini@sbcglobal.net",
-        "IS_ADMIN": 0
-    },
-    {
-        "USERNAME": "RayTest",
+        "USERNAME": "rsargolini",
         "PASSWORD": "password",
-        "EMAIL": "RayTest@aol.com",
+        "EMAIL": "rsargo@aol.com",
+        "IS_ADMIN": 0
+    },
+    {
+        "USERNAME": "bsmith",
+        "PASSWORD": "password",
+        "EMAIL": "brian.smith@gmail.com",
+        "IS_ADMIN": 0
+    },
+    {
+        "USERNAME": "kjohnson",
+        "PASSWORD": "password",
+        "EMAIL": "kjohnson@sbcglobal.net",
+        "IS_ADMIN": 0
+    },
+    {
+        "USERNAME": "swright",
+        "PASSWORD": "password",
+        "EMAIL": "steven.wright@gmail.com",
+        "IS_ADMIN": 0
+    },
+    {
+        "USERNAME": "bcooper",
+        "PASSWORD": "password",
+        "EMAIL": "brad.cooper@aol.com",
+        "IS_ADMIN": 0
+    },
+    {
+        "USERNAME": "cthompson",
+        "PASSWORD": "password",
+        "EMAIL": "cthompson@sbcglobal.net",
+        "IS_ADMIN": 0
+    },
+    {
+        "USERNAME": "kwilliams",
+        "PASSWORD": "password",
+        "EMAIL": "ken.williams@aol.com",
         "IS_ADMIN": 0
     }
 ]

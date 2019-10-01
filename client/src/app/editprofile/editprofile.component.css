@@ -1,0 +1,13 @@
+/* Edit Profile Page - Fieldset Legends */
+#userProfileInfoLegend {
+    font-size: 15px;
+    font-weight: bold;
+    background-color: antiquewhite;
+}
+
+/* Edit Profile Page - Fieldset Size */
+#userProfileInfoSet {
+    width: 780px;
+    border: thin solid;
+    padding: 1px;
+}

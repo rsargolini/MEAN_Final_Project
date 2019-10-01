@@ -31,7 +31,7 @@ export class AdminComponent implements OnInit {
 
     this.userid = this.userService.loginUserId;
 
-    // Get All Non-Admin Users
+    // Get All Non-Admin Users (UserService)
     this.userService.getUsers().subscribe(data => {
       this.users = data;
     });

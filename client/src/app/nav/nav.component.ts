@@ -20,12 +20,12 @@ export class NavComponent implements OnInit {
 
   ngOnInit() { };
 
-  // Checks if User is Authenticated
+  // Checks if User is Authenticated (UserService)
   isAuth(): boolean {
     return this.userService.getAuth();
   }
 
-  // Checks if User is Admin
+  // Checks if User is Admin (UserService)
   isAdmin(): boolean {
     return this.userService.getAdmin();
   }
@@ -55,7 +55,7 @@ export class NavComponent implements OnInit {
     this.router.navigate(['admin'])
   }
 
-  // Log Out Click - Navigate to Login Page
+  // Log Out Click - Navigate to Login Page (UserService)
   onLogOut(): void {
     this.userService.setAuth(false);
     this.userService.setAdmin(false);
