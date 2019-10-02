@@ -22,7 +22,7 @@ $ cd server
 $ npm run dev
 
 ## Routes/Contracts
-### Users Data from ProsgreSQL file users
+### Users Data from PostgreSQL file users
 
 POST (Login) - http://localhost:3000/users/login
 username
