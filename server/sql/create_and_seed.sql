@@ -6,9 +6,9 @@ use HCA;
 
 create table USERS (
 	ID		 	int(10) NOT NULL AUTO_INCREMENT, 
-	USER_NAME 	varchar(255) NOT NULL, 
+	USERNAME 	varchar(255) NOT NULL, 
 	PASSWORD	varchar(255) NOT NULL,
-	EMAIL 		varchar(255) NOT NULL,
+	EMAILADDRESS    varchar(255) NOT NULL,
 	IS_ADMIN	smallint(1) NOT NULL DEFAULT 0,
 	createdAt  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updatedAt  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -16,10 +16,10 @@ create table USERS (
 	PRIMARY KEY(ID)
 );
 
-INSERT INTO Users (USER_NAME, PASSWORD, EMAIL, IS_ADMIN) VALUES ('Admin', 'password', 'admin@test.com', 1);
-INSERT INTO Users (USER_NAME, PASSWORD, EMAIL, IS_ADMIN) VALUES ('rsargolini', 'password', 'rsargo@gmail.com', 0);
-INSERT INTO Users (USER_NAME, PASSWORD, EMAIL, IS_ADMIN) VALUES ('bsmith', 'password', 'bsmith@aol.com', 0);
-INSERT INTO Users (USER_NAME, PASSWORD, EMAIL, IS_ADMIN) VALUES ('wtaylor', 'password', 'will.taylor@sbcglobal.net', 0);
+INSERT INTO Users (USERNAME, PASSWORD, EMAIL, IS_ADMIN) VALUES ('Admin', 'password', 'admin@test.com', 1);
+INSERT INTO Users (USERNAME, PASSWORD, EMAIL, IS_ADMIN) VALUES ('rsargolini', 'password', 'rsargo@gmail.com', 0);
+INSERT INTO Users (USERNAME, PASSWORD, EMAIL, IS_ADMIN) VALUES ('bsmith', 'password', 'bsmith@aol.com', 0);
+INSERT INTO Users (USERNAME, PASSWORD, EMAIL, IS_ADMIN) VALUES ('wtaylor', 'password', 'will.taylor@sbcglobal.net', 0);
 
 #select * from users;
 #select * from users where id = 1;
