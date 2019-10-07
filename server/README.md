@@ -13,7 +13,7 @@
 + db name: hca
 
 ## Migrate DB
-$ cd server\db
+-$ cd server\db
 $ node migrate
 $ node seed
 
