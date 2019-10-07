@@ -18,8 +18,8 @@ $ node migrate
 $ node seed
 
 ## Start Server in Inspect Mode
-- $ cd server
-- $ npm run dev
+$ cd server
+$ npm run dev
 
 ## Routes/Contracts
 ### Users Data from PostgreSQL file users
